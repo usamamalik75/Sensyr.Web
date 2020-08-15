@@ -5,3 +5,4 @@ export * from './constants';
 export * from './configs';
 export * from './interceptors';
 export * from './sockets';
+export * from './models';
