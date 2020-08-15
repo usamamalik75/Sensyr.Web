@@ -19,13 +19,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "sensyr",
+      "app",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "sensyr",
+      "app",
       "kebab-case"
     ],
     "eofline": true,
