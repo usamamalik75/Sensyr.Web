@@ -1,1 +1,940 @@
-<p>dashboard works!</p>
+<!-- -------------- Body Wrap  -------------- -->
+<div id="main">
+    
+    
+    <section id="content_wrapper">
+    
+            <!-- -------------- Column Center -------------- -->
+            <section id="content" class="table-layout animated fadeIn">
+
+                <div class="chute chute-center">
+
+                    <div class="time-notification-section box-rounded">
+                        <div class="row row-box-rounded">
+                            <div class="col-md-6 col-sm-12 pd-l-0">
+                                <span class="day-status">Good Morning, Riley</span>
+                                <span class="time-status">12:05 pm, Monday, 27 July 2020</span>
+                            </div>
+                            <div class="col-md-6 col-sm-12 pd-r-0">
+                                <ul class="nav-notification">
+            
+                                    <li>
+                                        <a href="#" class="notify-icon">
+                                            <span class="active">&nbsp;</span>
+                                            <img src="assets/images/icon-notification.svg" alt="">  
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#" class="filter-by-btn">
+                                            <img src="assets/images/user-avatar.svg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="box-rounded">
+
+                        <div class="header-container">
+                            <div class="col-md-6 col-sm-12 pd-l-0">
+                                <h1>Sensors</h1>
+                            </div>
+                            <div class="col-md-6 col-sm-12 pd-r-0">
+                                <div class="header-buttons">
+                                    <a class="btn-light-inverse" href="#">Add Gateway</a>
+                                    <a class="btn-light-inverse" href="#modal-1">Add Sensor</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Popup Code -->
+
+                        <div id="modal-1" class="modalDialog">
+                            <div>
+                                <a href="#close" title="Close" class="closeDialog">
+                                    <img src="assets/images/icon-close.svg" />
+                                </a>
+                                <div class="modalHeading">
+                                    <h2>Temperature Group</h2>
+                                    <p>Group ID: 23456 • Machine: Stainless Steel Coating Pan </p>
+                                </div>
+
+                                <div class="modal-graph-section">
+                                    <h2>Performance</h2>
+                                    <img src="assets/images/sensor-graph.jpg" class="img-responsive" />
+                                </div>
+                                
+                                <div class="tab-row-sections">
+                                    <section>
+                                        <h2>Sensors</h2>
+                                    </section>
+
+                                    <div class="col-lg-12 pd-0">
+
+                                        <div class="col-md-4 col-sm-12 pd-l-0">
+                                            <div class="tab-sensor-card">
+                                                <section>
+                                                    <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg">
+                                                    <aside>
+                                                        <h3>Sensor ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p class="temp-stats">Temperature</p>
+                                                    </aside>
+                                                </section>
+                                                <div class="d-flex d-flex-temp-stats">
+                                                    <div>
+                                                        <h3>95˚C</h3>
+                                                        <p>Live Value</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>91.2˚C</h3>
+                                                        <p>Day Min</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>99.2˚C</h3>
+                                                        <p>Day Max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12 pd-l-0">
+                                            <div class="tab-sensor-card">
+                                                <section>
+                                                    <img src="assets/images/sensor-machine/Mark-7-Chute.jpg">
+                                                    <aside>
+                                                        <h3>Sensor ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p class="temp-stats">Temperature</p>
+                                                    </aside>
+                                                </section>
+                                                <div class="d-flex d-flex-temp-stats">
+                                                    <div>
+                                                        <h3>95˚C</h3>
+                                                        <p>Live Value</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>91.2˚C</h3>
+                                                        <p>Day Min</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>99.2˚C</h3>
+                                                        <p>Day Max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12 pd-0">
+                                            <div class="tab-sensor-card">
+                                                <section>
+                                                    <img src="assets/images/sensor-machine/Mark-7-Chute-3.jpg">
+                                                    <aside>
+                                                        <h3>Sensor ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p class="temp-stats temp-alert--blink">
+                                                            Temperature
+                                                            <span class="tooltip-top" data-tooltip="Critical!"><img src="assets/images/alert-blink-icon.png"></span>
+                                                        </p>
+                                                    </aside>
+                                                </section>
+                                                <div class="d-flex d-flex-temp-stats">
+                                                    <div>
+                                                        <h3>95˚C</h3>
+                                                        <p>Live Value</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>91.2˚C</h3>
+                                                        <p>Day Min</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>99.2˚C</h3>
+                                                        <p>Day Max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-row-sections">
+
+                                    <div class="col-lg-12 pd-0">
+
+                                        <div class="col-md-4 col-sm-12 pd-l-0">
+                                            <div class="tab-sensor-card">
+                                                <section>
+                                                    <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg">
+                                                    <aside>
+                                                        <h3>Sensor ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p class="temp-stats">Temperature</p>
+                                                    </aside>
+                                                </section>
+                                                <div class="d-flex d-flex-temp-stats">
+                                                    <div>
+                                                        <h3>95˚C</h3>
+                                                        <p>Live Value</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>91.2˚C</h3>
+                                                        <p>Day Min</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>99.2˚C</h3>
+                                                        <p>Day Max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 col-sm-12 pd-l-0">
+                                            <div class="tab-sensor-card">
+                                                <section>
+                                                    <img src="assets/images/sensor-machine/Mark-7-Chute-3.jpg">
+                                                    <aside>
+                                                        <h3>Sensor ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p class="temp-stats">Temperature</p>
+                                                    </aside>
+                                                </section>
+                                                <div class="d-flex d-flex-temp-stats">
+                                                    <div>
+                                                        <h3>95˚C</h3>
+                                                        <p>Live Value</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>91.2˚C</h3>
+                                                        <p>Day Min</p>
+                                                    </div>
+                                                    <div>
+                                                        <h3>99.2˚C</h3>
+                                                        <p>Day Max</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- End Modal Popup Code -->
+
+                        <div class="sub-header-tabs-container">
+                            <h2>Opened Alarms</h2>
+                            <ul class="tab-days">
+                                <li>
+                                    <a href="#">Active</a>
+                                </li>
+                                <!-- <li>
+                                    <a href="#">Last 3 Days</a>
+                                </li>
+                                <li class="active">
+                                    <a href="#">Last 7 days</a>
+                                </li>
+                                <li>
+                                    <a href="#">This Month</a>
+                                </li>
+                                <li>
+                                    <a href="#">Last Month</a>
+                                </li> -->
+                            </ul>
+                        </div>
+        
+                        <div class="headingGridFilter">
+                            <div class="col-md-4 pd-l-0">
+                                <div class="fourBoxColumn">
+                                    <h2>02</h2>
+                                    <p>Critical Alarms</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pd-l-0">
+                                <div class="fourBoxColumn yellowBox">
+                                    <h2>33</h2>
+                                    <p>Warnings Breached</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 pd-0">
+                                <div class="fourBoxColumn greenBox">
+                                    <h2>03</h2>
+                                    <p>In Progress</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start Grid -->
+                        <div class="panel panel-visible panel-custom-table">
+                            <div class="panel-body pn">
+                                <div class="table-responsive">
+                                    <table class="table" id="datatable" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Sensor and Machine</th>
+                                                <th>Time Elapsed</th>
+                                                <th>Sensor Type</th>
+                                                <th>Live Value</th>
+                                                <th>Day Min</th>
+                                                <th>Day Max</th>
+                                                <th>STATUS</th>
+                                                <th class="gridActionBtnTH">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="sensor-pic">
+                                                        <img src="assets/images/sensor-machine/mark-7.jpg" />
+                                                    </div>
+                                                    <div class="sensor-table-data">
+                                                        <span>Sensor ID: 23456</span>
+                                                        <span class="sensor-detail">Mark 7 Chute Tri Chromatic Color Sorter</span>
+                                                        <span>Stainless Steel Coating Pan</span>
+                                                    </div>
+                                                </td>
+                                                <td>01 min</td>
+                                                <td>Temperature</td>
+                                                <td>95˚C</td>
+                                                <td>91.2˚C</td>
+                                                <td>99.2˚C</td>
+                                                <td>
+                                                    <span class="btn-warning-grid">Warning</span>
+                                                </td>
+                                                <td class="gridActionBtn">
+                                                    <div class="btn-group">
+                                                        <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                                            <img src="assets/images/icon-dots.png"/>
+                                                        </span>
+                                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                            <li>
+                                                                <a href="#">Assign Technician</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="sensor-pic">
+                                                        <img src="assets/images/sensor-machine/bearingless-wheelset.jpg" />
+                                                    </div>
+                                                    <div class="sensor-table-data">
+                                                        <span>Sensor ID: 23456</span>
+                                                        <span class="sensor-detail">Bearingless wheelset</span>
+                                                        <span>Stainless Steel Coating Pan</span>
+                                                    </div>
+                                                </td>
+                                                <td>45 mins</td>
+                                                <td>Temperature</td>
+                                                <td>95˚C</td>
+                                                <td>91.2˚C</td>
+                                                <td>99.2˚C</td>
+                                                <td>
+                                                    <span class="btn-critical-grid">Critical</span>
+                                                </td>
+                                                <td class="gridActionBtn">
+                                                    <div class="btn-group">
+                                                        <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                                            <img src="assets/images/icon-dots.png"/>
+                                                        </span>
+                                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                            <li>
+                                                                <a href="#">Assign Technician</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="sensor-pic">
+                                                        <img src="assets/images/sensor-machine/Cylinder-Head-Temperature.jpg" />
+                                                    </div>
+                                                    <div class="sensor-table-data">
+                                                        <span>Sensor ID: 23456</span>
+                                                        <span class="sensor-detail">Cylinder Head Temperature</span>
+                                                        <span>Stainless Steel Coating Pan</span>
+                                                    </div>
+                                                </td>
+                                                <td>23 hrs</td>
+                                                <td>Temperature</td>
+                                                <td>95˚C</td>
+                                                <td>91.2˚C</td>
+                                                <td>99.2˚C</td>
+                                                <td>
+                                                    <span class="btn-critical-grid">Critical</span>
+                                                </td>
+                                                <td class="gridActionBtn">
+                                                    <div class="btn-group">
+                                                        <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                                            <img src="assets/images/icon-dots.png"/>
+                                                        </span>
+                                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                            <li>
+                                                                <a href="#">Assign Technician</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="sensor-pic">
+                                                        <img src="assets/images/sensor-machine/Cylinder-Head-Temperature-2.jpg" />
+                                                    </div>
+                                                    <div class="sensor-table-data">
+                                                        <span>Sensor ID: 23456</span>
+                                                        <span class="sensor-detail">Cylinder Head Temperature</span>
+                                                        <span>Stainless Steel Coating Pan</span>
+                                                    </div>
+                                                </td>
+                                                <td>2 days</td>
+                                                <td>Temperature</td>
+                                                <td>95˚C</td>
+                                                <td>91.2˚C</td>
+                                                <td>99.2˚C</td>
+                                                <td>
+                                                    <span class="btn-warning-grid">Warning</span>
+                                                </td>
+                                                <td class="gridActionBtn">
+                                                    <div class="btn-group">
+                                                        <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                                                            <img src="assets/images/icon-dots.png"/>
+                                                        </span>
+                                                        <ul class="dropdown-menu pull-right" role="menu">
+                                                            <li>
+                                                                <a href="#">Assign Technician</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- End Grid -->
+
+                    </div>
+                    
+
+                    <div class="col-lg-12 pd-0 box-container">
+                        
+                        <div class="col-md-4 col-sm-12 pd-l-0">
+                            <div class="white-box-three">
+                                <h2>24</h2>
+                                <p>Total Machines</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 pd-l-0">
+                            <div class="white-box-three white-total-sensor">
+                                <h2>120</h2>
+                                <p>Total Sensors</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 pd-0">
+                            <div class="white-box-three white-sensor-group">
+                                <h2>08</h2>
+                                <p>Sensor Groups</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-12 pd-0 box-container">
+                        <div class="tab-block tab-sensors">
+                            <div class="tabs-sensor-header">
+                                <ul>
+                                    <li class="active">
+                                        <a href="#tabGeneral" data-toggle="tab" aria-expanded="true">Individual Sensors <span>120</span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tabPreferences" data-toggle="tab" aria-expanded="false">Sensor Groups <span>12</span></a>
+                                    </li>
+                                </ul>
+                                <div class="tab-sensor-head-form">
+                                    <input type="search" placeholder="Search sensor by name or machine" />
+                                    <select>
+                                        <option>Filter By</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div id="tabGeneral" class="tab-pane active">
+                                    
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Vibratory Furnace Charger (3)</h2>
+
+                                            <div class="tab-row-btn-group">
+                                                <a href="#">Add to Group</a>
+                                                <a class="row-btn--warning" href="#">Delete</a>
+                                                <a class="row-btn--cancel" href="#">Cancel</a>
+                                            </div>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute.jpg" />
+                                                        <aside>
+                                                            <div class="custom-checkbox">
+                                                                <input class="check" type="checkbox"/>
+                                                            </div>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-3.jpg" />
+                                                        <aside>
+                                                            <div class="custom-checkbox">
+                                                                <input class="check" type="checkbox"/>
+                                                            </div>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats temp-alert--blink">
+                                                                Temperature
+                                                                <span class="tooltip-top" data-tooltip="Critical!"><img src="assets/images/alert-blink-icon.png" /></span>
+                                                            </p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Stainless Steel Coating Pan (3)</h2>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" />
+                                                        <aside>
+                                                            <div class="custom-checkbox">
+                                                                <input class="check" type="checkbox"/>
+                                                            </div>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-3.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats temp-warning--blink">
+                                                                Temperature
+                                                                <span class="tooltip-top" data-tooltip="Warning!"><img src="assets/images/warning-blink-icon.png" /></span>
+                                                            </p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Vibratory Furnace Charger (3)</h2>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats">Temperature</p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 col-sm-12 pd-0">
+                                                <div class="tab-sensor-card">
+                                                    <section>
+                                                        <img src="assets/images/sensor-machine/Mark-7-Chute-3.jpg" />
+                                                        <aside>
+                                                            <h3>Sensor ID: 23456</h3>
+                                                            <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                            <p class="temp-stats temp-warning--blink">
+                                                                Temperature
+                                                                <span class="tooltip-top" data-tooltip="Warning!"><img src="assets/images/warning-blink-icon.png" /></span>
+                                                            </p>
+                                                        </aside>
+                                                    </section>
+                                                    <div class="d-flex d-flex-temp-stats">
+                                                        <div>
+                                                            <h3>95˚C</h3>
+                                                            <p>Live Value</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>91.2˚C</h3>
+                                                            <p>Day Min</p>
+                                                        </div>
+                                                        <div>
+                                                            <h3>99.2˚C</h3>
+                                                            <p>Day Max</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="grid-pagination">
+                                        <p><img src="assets/images/icon-left-arrow.svg" /></p>
+                                        <ul>
+                                            <li class="active">1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li>6</li>
+                                            <li>7</li>
+                                        </ul>
+                                        <p><img src="assets/images/icon-right-arrow.svg" /></p>
+                                    </div>
+
+                                </div>
+                                <div id="tabPreferences" class="tab-pane">
+
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Vibratory Furnace Charger (3)</h2>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Stainless Steel Coating Pan</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Tropicool Sump Machine</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Cylinder Head Temperature</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Vibratory Furnace Charger (3)</h2>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Stainless Steel Coating Pan</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Tropicool Sump Machine</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Cylinder Head Temperature</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Mark 7 Chute Tri Chromatic Color Sorter</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-row-sections">
+                                        <section>
+                                            <h2>Vibratory Furnace Charger (1)</h2>
+                                        </section>
+
+                                        <div class="col-lg-12 pd-0">
+
+                                            <div class="col-md-3 col-sm-12 pd-l-0">
+                                                <div class="tab-sensor-group-card">
+                                                    <section>
+                                                        <h3>Group ID: 23456</h3>
+                                                        <h4>Stainless Steel Coating Pan</h4>
+                                                        <p>12 sensors • 2 Groups</p>
+                                                    </section>
+                                                    <div class="view-sensor-link">
+                                                        <p><a href="#">View Sensors</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+        
+                </div>
+
+            </section>
+
+        </section>
+
+</div>
+<!-- -------------- /Body Wrap  -------------- -->
