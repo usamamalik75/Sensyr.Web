@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NavMenuComponent } from '@app/nav/nav-menu/nav-menu.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 
 const myChildren: any = [
