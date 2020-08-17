@@ -12,16 +12,7 @@ export class SensorFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAlaramDetails();
   }
 
-  getAlaramDetails(){
-    this.sensorService.getAlaramDetails().subscribe(
-      data => {
-        console.log(JSON.stringify(data));
-      },
-      error => {
-      });
-  }
 
 }

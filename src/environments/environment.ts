@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_aepistle_uri: 'http://198.12.229.152/api/',
+  api_aepistle_uri: 'http://localhost:53779/api',
 };
 
 /*
