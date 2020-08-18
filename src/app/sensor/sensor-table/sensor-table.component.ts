@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sensor-table.component.scss']
 })
 export class SensorTableComponent implements OnInit {
+  isSensorGroup: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  SensorGroup(){
+    this.isSensorGroup = true;
+  }
 }

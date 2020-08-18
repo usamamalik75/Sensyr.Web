@@ -19,15 +19,14 @@ export class SensorIndividualTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.sensorStatusIdEnum = SensorStatusIdEnum;
-    this.getIndividualSensors();
-    // this.getTestDetail();
+    // this.getIndividualSensors();
+    this.getTestDetail();
   }
 
   getIndividualSensors(){
     this.sensorService.getIndividualSensors().subscribe(
       data => {
         this.individualTableModel = data.Data;
-        console.log(JSON.stringify(data));
       },
       error => {
       });
