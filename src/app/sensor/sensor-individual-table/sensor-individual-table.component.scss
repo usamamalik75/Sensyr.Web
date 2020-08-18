@@ -1,0 +1,18 @@
+.individual-btn{
+    position: relative;
+    right: 20px;
+    top: 0px;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 767px) {
+    .individual-btn{
+        position: relative;
+        right: 0px;
+        top: 0px;
+         section {
+            margin-bottom: 0px !important;
+        }
+    }
+    
+  }

@@ -1,5 +1,6 @@
-import { SensorEndPoints } from './sensor';
+import { SensorEndPoints, DashboardEndPoints } from './sensor';
 
 export const ControllerEndpoints = [
-    SensorEndPoints
+    SensorEndPoints,
+    DashboardEndPoints
 ];

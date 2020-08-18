@@ -25,7 +25,6 @@ export class SensorAlarmTableComponent implements OnInit {
     this.sensorService.getAlaramDetails().subscribe(
       data => {
         this.alarmModel = data.Data;
-        console.log(JSON.stringify(data));
       },
       error => {
       });

@@ -20,6 +20,5 @@ export class NavMenuComponent implements OnInit {
   }
 
   save(){
-    console.log();
   }
 }

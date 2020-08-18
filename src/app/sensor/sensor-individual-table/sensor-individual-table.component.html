@@ -1,0 +1,80 @@
+
+<div class="table-main" *ngIf="individualTableModel">
+    <div class="tab-row-sections individual-btn">
+        <section>
+    
+            <div class="tab-row-btn-group">
+                <a>Add to Group</a>
+                <a class="row-btn--warning">Delete</a>
+                <a class="row-btn--cancel">Cancel</a>
+            </div>
+        </section>
+    </div>
+    <div class="tab-row-sections" *ngFor="let item of individualTableModel.Items; let i = index">
+        <section>
+            <h2>{{item.MachineName}} ({{item.IndividualSensorResponses.length}})</h2>
+
+            <!-- <div class="tab-row-btn-group">
+                <a>Add to Group</a>
+                <a class="row-btn--warning">Delete</a>
+                <a class="row-btn--cancel">Cancel</a>
+            </div> -->
+        </section>
+
+        <div class="col-lg-12 pd-0">
+
+            <div class="col-md-4 col-sm-12 pd-l-0 mt-6"
+                *ngFor="let individualSenson of item.IndividualSensorResponses; let i = index">
+                <div class="tab-sensor-card">
+                    <section>
+                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg">
+                        <aside>
+                            <h3>Sensor ID: {{individualSenson.SensorId}}</h3>
+                            <h4>{{individualSenson.SensorName}}</h4>
+                            <p class="temp-stats temp-warning--blink">{{individualSenson.SensorTypeName}}
+                                <span *ngIf="individualSenson.SensorStatusId === sensorStatusIdEnum.critical"
+                                    class="tooltip-top" data-tooltip="Critical!"><img
+                                        src="assets/images/alert-blink-icon.png"></span>
+                                <span class="tooltip-top"
+                                    *ngIf="individualSenson.SensorStatusId === sensorStatusIdEnum.warning"
+                                    data-tooltip="Warning!"><img src="assets/images/warning-blink-icon.png"></span>
+                            </p>
+                        </aside>
+                    </section>
+                    <div class="d-flex d-flex-temp-stats">
+                        <div>
+                            <h3>{{individualSenson.LiveValue}}˚C</h3>
+                            <p>Live Value</p>
+                        </div>
+                        <div>
+                            <h3>{{individualSenson.DayMin}}˚C</h3>
+                            <p>Day Min</p>
+                        </div>
+                        <div>
+                            <h3>{{individualSenson.DayMax}}˚C</h3>
+                            <p>Day Max</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div class="grid-pagination">
+    <p><img src="assets/images/icon-left-arrow.svg"></p>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+    </ul>
+    <p><img src="assets/images/icon-right-arrow.svg"></p>
+</div>
