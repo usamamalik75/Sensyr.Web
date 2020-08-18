@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 .table-main {
-    height: 580px;
+    max-height: 580px;
     display: block;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
