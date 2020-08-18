@@ -37,7 +37,7 @@ export class SensorGroupTableComponent implements OnInit {
   private getTestDetail() {
     this.sensorService.getTestDetail().subscribe(
       data => {
-        this.groupTableModel = data;
+        this.groupTableModel = data.Data;
       });
   }
 
