@@ -8,13 +8,21 @@ import { SensorMachineTotalComponent } from './sensor-machine-total/sensor-machi
 import { SensorTableComponent } from './sensor-table/sensor-table.component';
 import { SensorIndividualTableComponent } from './sensor-individual-table/sensor-individual-table.component';
 import { SensorGroupTableComponent } from './sensor-group-table/sensor-group-table.component';
+import { SharedModule } from '@app/shared/module/shared.module';
 
 
 @NgModule({
-  declarations: [SensorFormComponent, SensorAlarmTableComponent, SensorMachineTotalComponent, SensorTableComponent, SensorIndividualTableComponent, SensorGroupTableComponent],
+  declarations: [
+    SensorFormComponent,
+    SensorAlarmTableComponent,
+    SensorMachineTotalComponent,
+    SensorTableComponent,
+    SensorIndividualTableComponent,
+    SensorGroupTableComponent],
   imports: [
     CommonModule,
-    SensorRoutingModule
+    SensorRoutingModule,
+    SharedModule
   ]
 })
 export class SensorModule { }

@@ -1,30 +1,33 @@
 <div class="col-lg-12 pd-0 box-container">
     <div class="tab-block tab-sensors">
+        <form  [formGroup]="sensorTableForm" novalidate>
         <div class="tabs-sensor-header">
             <ul>
                 <li class="active">
-                    <a href="#tabGeneral" data-toggle="tab" aria-expanded="true">Individual Sensors <span>1</span></a>
+                    <a (click)="resetSerch('individual')" href="#tabGeneral" data-toggle="tab" aria-expanded="true">Individual Sensors <span>120</span></a>
                 </li>
                 <li class="">
-                    <a href="#tabPreferences" data-toggle="tab" aria-expanded="false">Sensor Groups <span>2</span></a>
+                    <a (click)="resetSerch('group')" href="#tabPreferences" data-toggle="tab" aria-expanded="false">Sensor Groups <span>12</span></a>
                 </li>
             </ul>
             <div class="tab-sensor-head-form">
-                <input type="search" placeholder="Search sensor by name or machine">
+                <input type="search"  *ngIf="!isSensorGroup" placeholder="Search sensor by name or machine" formControlName="searchText"  (keyup.enter)="search()">
+                <input type="search" *ngIf="isSensorGroup" placeholder="Search sensor by name or machine" formControlName="searchGroupText"  (keyup.enter)="search()">
                 <select>
                     <option>Filter By</option>
                 </select>
             </div>
         </div>
+    </form>
         <div class="tab-content">
             <div id="tabGeneral" class="tab-pane active">
                 <!-- Individual Table -->
-                <app-sensor-individual-table></app-sensor-individual-table>
+                <app-sensor-individual-table [searchClick]="searchClick" > ></app-sensor-individual-table>
                 <!-- Individual Table End -->
             </div>
             <div id="tabPreferences" class="tab-pane">
                 <!-- Group Table -->
-                <app-sensor-group-table></app-sensor-group-table>
+                <app-sensor-group-table *ngIf="isSensorGroupTable" [searchGroupClick]="searchGroupClick"></app-sensor-group-table>
                 <!-- Group Table End-->
             </div>
         </div>

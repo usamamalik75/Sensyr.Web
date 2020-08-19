@@ -36,13 +36,21 @@ export class SensorService extends BaseService<any> {
       .pipe(map((data: any) => data));
   }
 
-  getIndividualSensors(): Observable<any> {
-    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getIndividualSensorsEndPoint)
+  getIndividualSensors(search?: any): Observable<any> {
+    let endPoint = this.sensorEndPoints.getIndividualSensorsEndPoint;
+    if (search) {
+      endPoint = this.sensorEndPoints.getIndividualSensorsEndPoint + '?Search=' + search;
+    }
+    return this.get(this.apiService.sensorApi + endPoint)
       .pipe(map((data: any) => data));
   }
 
-  getSensorGroups(): Observable<any> {
-    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorGroupsEndPoint)
+  getSensorGroups(search?): Observable<any> {
+    let endPoint = this.sensorEndPoints.getSensorGroupsEndPoint;
+    if (search) {
+      endPoint = this.sensorEndPoints.getSensorGroupsEndPoint + '?Search=' + search;
+    }
+    return this.get(this.apiService.sensorApi + endPoint)
       .pipe(map((data: any) => data));
   }
 
