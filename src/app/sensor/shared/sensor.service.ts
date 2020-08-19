@@ -20,6 +20,7 @@ export class SensorService extends BaseService<any> {
     private dashboardEndPoints: DashboardEndPoints,
     private http: HttpClient,
     private httpBackend: HttpBackend,
+    private constantService: HttpBackend,
   ) {
     super(
       httpClient,
@@ -36,10 +37,10 @@ export class SensorService extends BaseService<any> {
       .pipe(map((data: any) => data));
   }
 
-  getIndividualSensors(search?: any): Observable<any> {
-    let endPoint = this.sensorEndPoints.getIndividualSensorsEndPoint;
+  getIndividualSensors(config: any, search?: any): Observable<any> {
+    let endPoint = this.sensorEndPoints.getIndividualSensorsEndPoint + '?Page=' + config.currentPage + '&PerPage' + config.itemsPerPage;
     if (search) {
-      endPoint = this.sensorEndPoints.getIndividualSensorsEndPoint + '?Search=' + search;
+      endPoint = endPoint + '&Search=' + search;
     }
     return this.get(this.apiService.sensorApi + endPoint)
       .pipe(map((data: any) => data));

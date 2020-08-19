@@ -1,4 +1,9 @@
 {
+  "Data": {
+    "TotalCount": 19,
+    "CurrentPage": 1,
+    "ItemsPerPage": 10,
+    "PagesCount": 2,
     "Items": [
       {
         "MachineId": 0,
@@ -205,6 +210,126 @@
           }
 
         ]
+      },
+      {
+        "MachineId": 3,
+        "MachineName": "DSD",
+        "IndividualSensorResponses": [
+          {
+            "SensorId": 1,
+            "Voltage": 10,
+            "LiveValue": 100,
+            "SensorStatusId": 3,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 25,
+            "DayMax": 110,
+            "TimeElapsed": 0,
+            "SensorName": "Temperature1",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          },
+          {
+            "SensorId": 167876,
+            "Voltage": 10,
+            "LiveValue": 654,
+            "SensorStatusId": 1,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 54,
+            "DayMax": 55,
+            "TimeElapsed": 0,
+            "SensorName": "ABCD",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          },
+          {
+            "SensorId": 345431,
+            "Voltage": 10,
+            "LiveValue": 18,
+            "SensorStatusId": 2,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 4,
+            "DayMax": 44,
+            "TimeElapsed": 0,
+            "SensorName": "Temperature 112233551",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          } ,
+          {
+            "SensorId": 435431,
+            "Voltage": 10,
+            "LiveValue": 18,
+            "SensorStatusId": 1,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 44,
+            "DayMax": 344,
+            "TimeElapsed": 0,
+            "SensorName": "Temperature C",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          },
+          {
+            "SensorId": 12344323,
+            "Voltage": 10,
+            "LiveValue": 518,
+            "SensorStatusId": 4,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 54,
+            "DayMax": 454,
+            "TimeElapsed": 0,
+            "SensorName": "Temperature 112233551",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          },
+          {
+            "SensorId": 435431,
+            "Voltage": 10,
+            "LiveValue": 18,
+            "SensorStatusId": 2,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 44,
+            "DayMax": 344,
+            "TimeElapsed": 0,
+            "SensorName": "Tempersadature C",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          },
+          {
+            "SensorId": 12344323,
+            "Voltage": 10,
+            "LiveValue": 518,
+            "SensorStatusId": 2,
+            "SensorStatusName": "In Progress",
+            "DateTime": "2020-08-18T05:01:32.69",
+            "Avg": null,
+            "DayMin": 54,
+            "DayMax": 454,
+            "TimeElapsed": 0,
+            "SensorName": "Temperature FFF",
+            "SensorTypeName": "Temperature",
+            "MachineName": "CMS",
+            "MachineId": 0
+          }
+
+        ]
       }
     ]
   }
+}

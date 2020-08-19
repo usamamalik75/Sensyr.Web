@@ -5,7 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class ConstantService {
 
-  constructor() { }
+  defaultPage: number;
+  defaultItemPerPage: number;
+  constructor() {
+    this.defaultPage = 1;
+    this.defaultItemPerPage = 10;
+  }
 }
 
 

@@ -4141,6 +4141,27 @@ td.legendColorBox {
   border-radius: 50%;
   color:white;
 }
+
+.grid-pagination ul li.current, 
+.ngx-pagination a:hover, .ngx-pagination button:hover{
+  background: #3241D3 !important;
+  border-radius: 50%;
+  color:white !important;
+}
+
+.ngx-pagination a {
+  color: #9da4b8 !important;
+}
+
+.li-span{
+  padding: 10px;
+}
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
+
 .grid-pagination p:last-child{
   padding-left:10px;
 }
