@@ -13,8 +13,8 @@
                         <h4>{{groupSensor.GroupName}}</h4>
                         <p>{{groupSensor.TotalMachineGroupSensors}} sensors • </p>
                     </section>
-                    <div class="view-sensor-link">
-                        <p><a >View Sensors</a></p>
+                    <div class="view-sensor-link cp" (click)="openSensorGroupForm(groupSensor)">
+                        <p><a  >View Sensors</a></p>
                     </div>
                 </div>
             </div>

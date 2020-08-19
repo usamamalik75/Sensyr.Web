@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { SensorService } from '../shared/sensor.service';
 import { SensorStatusIdEnum } from '@app/shared/services';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SensorGroupFormComponent } from '../sensor-group-form/sensor-group-form.component';
 
 @Component({
   selector: 'app-sensor-group-table',
@@ -15,7 +17,8 @@ export class SensorGroupTableComponent implements OnInit {
   @Input() private searchGroupClick: EventEmitter<any>;
 
   constructor(
-    private sensorService: SensorService
+    private sensorService: SensorService,
+    private ngbModal: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -52,5 +55,19 @@ export class SensorGroupTableComponent implements OnInit {
       });
   }
 
+
+  openSensorGroupForm(data) {
+    const modalRef = this.ngbModal.open(SensorGroupFormComponent, {
+      size: 'lg',
+      windowClass: 'directory-installer',
+      backdrop: 'static',
+      keyboard: false,
+    });
+    modalRef.componentInstance.data = data;
+    modalRef.result.then((result) => {
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 
 }

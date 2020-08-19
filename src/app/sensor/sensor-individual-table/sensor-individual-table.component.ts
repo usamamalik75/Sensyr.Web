@@ -16,7 +16,8 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
   config = {
     itemsPerPage: this.constantSetvice.defaultItemPerPage,
     currentPage: this.constantSetvice.defaultPage,
-    totalItems: 0
+    totalItems: 0,
+    id: 'custom'
   };
   searchText: string;
 
