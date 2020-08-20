@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/core/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signin',
@@ -17,6 +18,7 @@ export class SigninComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private router: Router,
+    private toastrService: ToastrService
 
   ) { }
 
@@ -26,8 +28,12 @@ export class SigninComponent implements OnInit {
 
   private bindForm() {
     this.signinForm = this.formBuilder.group({
-      email: ['s.arshad623@gmail.com'],
-      password: ['Salman@123']
+      email: [null, Validators.compose([
+        Validators.required,
+      ])],
+      password: [null, Validators.compose([
+        Validators.required,
+      ])],
     });
   }
 
@@ -35,11 +41,16 @@ export class SigninComponent implements OnInit {
   postLogin(search?) {
     this.authService.postLogin(this.signinForm.value).subscribe(
       data => {
-        const token = 'Bearer ' + data.Data.Token;
-        this.authenticationService.set('token', token);
-        this.router.navigate(['app', 'sensor']);
+        if (data.Status === 500) {
+          this.toastrService.error(data.Message);
+        } else {
+          const token = 'Bearer ' + data.Data.Token;
+          this.authenticationService.set('token', token);
+          this.router.navigate(['app', 'sensor']);
+        }
       },
       error => {
+        this.toastrService.error(error.error.errors.Email[0]);
       });
   }
 
