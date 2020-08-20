@@ -11,6 +11,14 @@ const routes: Routes = [
       delay: false
     },
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('@app/auth/auth.module').then(m => m.AuthModule),
+    data: {
+      preload: true,
+      delay: false
+    },
+  },
 ];
 
 @NgModule({

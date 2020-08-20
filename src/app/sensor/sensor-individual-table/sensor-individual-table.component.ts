@@ -28,8 +28,8 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sensorStatusIdEnum = SensorStatusIdEnum;
-    // this.getIndividualSensors();
-    this.getTestDetail();
+    this.getIndividualSensors();
+    // this.getTestDetail();
     this.searchEvent();
   }
 
