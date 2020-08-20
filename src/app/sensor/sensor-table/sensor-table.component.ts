@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SensorService } from '../shared/sensor.service';
+import { TotalMachineSensor } from '../shared/alarm.model';
 
 @Component({
   selector: 'app-sensor-table',
@@ -9,11 +10,12 @@ import { SensorService } from '../shared/sensor.service';
 })
 export class SensorTableComponent implements OnInit {
   isSensorGroup: boolean;
-
+  totalMachineSensor: TotalMachineSensor[] = [];
   sensorTableForm: FormGroup;
+  isSensorGroupTable: boolean;
+
   @Output() searchClick = new EventEmitter<{ searchText: any }>();
   @Output() searchGroupClick = new EventEmitter<{ searchText: any }>();
-  isSensorGroupTable: boolean;
 
   constructor(
     private sensorService: SensorService,
@@ -23,6 +25,7 @@ export class SensorTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.bindForm();
+    this.getTotalMachinesGroupsSensors();
   }
 
   private bindForm() {
@@ -31,6 +34,16 @@ export class SensorTableComponent implements OnInit {
       searchGroupText: ['']
     });
   }
+
+  private getTotalMachinesGroupsSensors() {
+    this.sensorService.SelectedUser$.subscribe(
+      data => {
+        this.totalMachineSensor = data.Data;
+      },
+      error => {
+      });
+  }
+
 
   SensorGroup() {
     this.isSensorGroup = true;

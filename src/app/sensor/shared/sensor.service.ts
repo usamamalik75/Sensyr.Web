@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from '@app/shared/services/base.service';
 import { ApiService } from '@app/shared/services';
@@ -13,6 +13,7 @@ import { SensorEndPoints, DashboardEndPoints } from '@app/shared/endpoints/senso
 export class SensorService extends BaseService<any> {
 
   private urlTest = 'assets/json/test.json';
+  public SelectedUser$: BehaviorSubject<any> = new BehaviorSubject({} as any);
   constructor(
     httpClient: HttpClient,
     private apiService: ApiService,
@@ -33,8 +34,12 @@ export class SensorService extends BaseService<any> {
   }
 
   getTotalMachinesGroupsSensors(): Observable<any> {
-    return this.get(this.apiService.dashboardApi + this.dashboardEndPoints.getTotalMachinesGroupsSensorsEndPoint)
-      .pipe(map((data: any) => data));
+    this.get(this.apiService.dashboardApi + this.dashboardEndPoints.getTotalMachinesGroupsSensorsEndPoint)
+    .subscribe(data => {
+      this.SelectedUser$.next(data);
+    });
+    return this.SelectedUser$;
+      // .pipe(map((data: any) => data));
   }
 
   getIndividualSensors(config: any, search?: any): Observable<any> {
