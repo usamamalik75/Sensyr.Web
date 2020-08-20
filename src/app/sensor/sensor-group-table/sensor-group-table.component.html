@@ -13,13 +13,12 @@
                         <h4>{{groupSensor.GroupName}}</h4>
                         <p>{{groupSensor.TotalMachineGroupSensors}} sensors • </p>
                     </section>
-                    <div class="view-sensor-link cp" (click)="openSensorGroupForm(groupSensor)">
-                        <p><a  >View Sensors</a></p>
+                    <div class="view-sensor-link cp"
+                        (click)="modalData(groupSensor.MachineGroupId);openModal('custom-modal-1')">
+                        <p><a>View Sensors</a></p>
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </div>
@@ -27,3 +26,16 @@
 
 
 </div>
+
+
+
+
+<jw-modal id="custom-modal-1">
+    <span *ngIf="groupId">
+        <a (click)="closeModal('custom-modal-1');" title="Close" class="closeDialog">
+            <img src="assets/images/icon-close.svg">
+        </a>
+
+        <app-sensor-group-form [data]="groupId"></app-sensor-group-form>
+    </span>
+</jw-modal>
