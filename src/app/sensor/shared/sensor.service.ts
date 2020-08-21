@@ -32,6 +32,20 @@ export class SensorService extends BaseService<any> {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getAlarmsEndPoint)
       .pipe(map((data: any) => data));
   }
+  getAlarmsStatuses(): Observable<any> {
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getAlarmsStatusesEndPoint)
+      .pipe(map((data: any) => data));
+  }
+
+  getSensorsByGroupId(id){
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorsByGroupIdEndPoint + '?Id=' + id)
+    .pipe(map((data: any) => data));
+  }
+
+  getSensorById(id){
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorByIdEndPoint + '?Id=' + id)
+    .pipe(map((data: any) => data));
+  }
 
   getTotalMachinesGroupsSensors(): Observable<any> {
     this.get(this.apiService.dashboardApi + this.dashboardEndPoints.getTotalMachinesGroupsSensorsEndPoint)

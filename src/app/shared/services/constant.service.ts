@@ -16,7 +16,8 @@ export class ConstantService {
 
 export enum SensorStatusEnum {
   warning = 'Warning',
-  critical = 'Critical'
+  critical = 'Critical',
+  inProgress = 'In Progress'
 }
 
 
