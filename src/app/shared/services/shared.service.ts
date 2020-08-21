@@ -47,4 +47,18 @@ export class SharedService {
       return 'Good Evening';
     }
   }
+
+  public getCustomDateTime = (val) => {
+    const d = new Date(val);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const year = d.getFullYear();
+    const date = d.getDate();
+    const monthIndex = d.getMonth();
+    const monthName = months[monthIndex];
+    const dayIndex = d.getDay();
+    const dayName = days[dayIndex];
+    const formatted = `${dayName}, ${date} ${monthName} ${year}`;
+    return formatted;
+  }
 }

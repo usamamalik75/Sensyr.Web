@@ -46,3 +46,38 @@ export interface Item {
 export interface IndividualTableModel {
     Items: Item[];
 }
+
+export interface SensorModel {
+    SensorId: number;
+    SensorName: string;
+    MachineName: string;
+    DataTypeName: string;
+    MachineId: number;
+    SensorTypeId: number;
+    FrequencyNumber: number;
+    CriticalMin: number;
+    CriticalMax: number;
+    WarningMin: number;
+    WarningMax: number;
+    DataTypeId: number;
+    CustomEquation: string;
+    GatewayId: number;
+    PortNumber: number;
+    SleepStart: string;
+    SleepEnd: string;
+    DigitalAlarm?: any;
+    DateCreated: Date;
+    DigitalLowMin?: any;
+    DigitalLowMax?: any;
+    DigitalHighMin?: any;
+    DigitalHighMax?: any;
+    DateModified?: any;
+    LastModifiedBy?: any;
+    CreatedBy?: any;
+    SensorTemplateId?: any;
+    VoltageCriticalMin?: any;
+    VoltageCriticalMax?: any;
+    VoltageWarningMin?: any;
+    VoltageWarningMax?: any;
+    LastValue: number;
+}

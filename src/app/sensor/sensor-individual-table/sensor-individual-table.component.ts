@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy, EventEmitter } from '@angular/core
 import { SensorService } from '../shared/sensor.service';
 import { IndividualTableModel } from '../shared/alarm.model';
 import { SensorStatusIdEnum, ConstantService } from '@app/shared/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sensor-individual-table',
@@ -24,6 +25,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
   constructor(
     private sensorService: SensorService,
     private constantSetvice: ConstantService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +67,10 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
         // this.config.itemsPerPage = data.Data.ItemsPerPage;
         this.config.currentPage = data.Data.CurrentPage;
       });
+  }
+
+  sensorDetail(data) {
+    this.router.navigate(['app', 'sensor', 'detail', data.SensorId, data.SensorTypeName]);
   }
 
   ngOnDestroy() {
