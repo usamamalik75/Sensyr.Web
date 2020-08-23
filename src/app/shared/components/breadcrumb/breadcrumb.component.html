@@ -1,0 +1,13 @@
+<div class="col-lg-12 pd-0">
+  <p class="bread-crumb-data">
+    <span *ngFor="let breadcrumb of breadcrumbs;let last = last;">
+      <span class="cp" *ngIf="!last" [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
+        {{ breadcrumb.label }}
+      </span>
+      <span *ngIf="!last" class="breadcrumb-arrow">&gt;</span>
+      <span *ngIf="last" class="breadcrumb-highlighted"> {{ breadcrumb.label }}</span>
+
+    </span>
+  </p>
+</div>
+

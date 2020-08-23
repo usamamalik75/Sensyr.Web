@@ -25997,13 +25997,15 @@ body.basic-timeline .panel-clone {
 }
 .bread-crumb-data .breadcrumb-highlighted, .bread-crumb-data .breadcrumb-arrow{
   color:#a4aabd;
+  margin-left: 10px;
 }
+
 .bread-crumb-data .breadcrumb-highlighted{
   margin:0;
 }
 .bread-crumb-data span{
   display:inline-block;
-  margin:0 10px;
+  margin:0 5px 0px 0px;
 }
 .white-box-three h2{
   font-weight: 500;

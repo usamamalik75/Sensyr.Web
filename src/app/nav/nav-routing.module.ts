@@ -8,16 +8,14 @@ const myChildren: any = [
     path: 'sensor',
     loadChildren: () => import('@app/sensor/sensor.module').then(m => m.SensorModule),
     data: {
-      preload: true,
-      delay: true
+      breadcrumb: 'Sensors'
     },
   },
   {
     path: 'machine',
     loadChildren: () => import('@app/machine/machine.module').then(m => m.MachineModule),
     data: {
-      preload: true,
-      delay: true
+      breadcrumb: 'Machines'
     },
   }
 ];

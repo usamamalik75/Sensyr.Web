@@ -9,14 +9,15 @@ const routes: Routes = [
     path: '',
     component: SensorFormComponent,
     data: {
-      breadcrumb: null
+      breadcrumb: ''
     },
   },
   {
-    path: 'detail/:sensorId/:sensorTypeName',
+    path: 'detail/:sensorId/:sensorTypeName/:breadcrumbName',
     component: SensorDetailFormComponent,
     data: {
-      breadcrumb: null
+      breadcrumb: 'Sensors Detail',
+      breadcrumbName : true
     },
   },
 ];

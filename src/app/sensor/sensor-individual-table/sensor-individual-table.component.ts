@@ -70,7 +70,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
   }
 
   sensorDetail(data) {
-    this.router.navigate(['app', 'sensor', 'detail', data.SensorId, data.SensorTypeName]);
+    this.router.navigate(['app', 'sensor', 'detail', data.SensorId, data.SensorTypeName, data.SensorName]);
   }
 
   ngOnDestroy() {
