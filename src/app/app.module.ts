@@ -8,7 +8,7 @@ import { httpInterceptorProviders } from '@app/core/interceptors';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { ControllerEndpoints } from '@app/shared/endpoints';
-
+import { HighchartsChartModule } from 'highcharts-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +21,7 @@ import { ControllerEndpoints } from '@app/shared/endpoints';
     ToastrModule.forRoot({
       preventDuplicates: true
     }),
+    HighchartsChartModule
   ],
   providers: [
     httpInterceptorProviders,

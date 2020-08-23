@@ -11,6 +11,7 @@ import { SensorGroupTableComponent } from './sensor-group-table/sensor-group-tab
 import { SharedModule } from '@app/shared/module/shared.module';
 import { SensorGroupFormComponent } from './sensor-group-form/sensor-group-form.component';
 import { SensorDetailFormComponent } from './sensor-detail-form/sensor-detail-form.component';
+import { SensorDetailAnalyticsComponent } from './sensor-detail-analytics/sensor-detail-analytics.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SensorDetailFormComponent } from './sensor-detail-form/sensor-detail-fo
     SensorIndividualTableComponent,
     SensorGroupTableComponent,
     SensorGroupFormComponent,
-    SensorDetailFormComponent],
+    SensorDetailFormComponent,
+    SensorDetailAnalyticsComponent],
   imports: [
     CommonModule,
     SensorRoutingModule,
