@@ -5,6 +5,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@app/shared/_modal/modal.module';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [],
@@ -13,14 +14,16 @@ import { HighchartsChartModule } from 'highcharts-angular';
     ReactiveFormsModule,
     NgxPaginationModule,
     NgbModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    ConfirmDialogModule
   ],
   exports: [
     ReactiveFormsModule,
     NgxPaginationModule,
     NgbModule,
     ModalModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    ConfirmDialogModule
   ]
 })
 export class SharedModule { }

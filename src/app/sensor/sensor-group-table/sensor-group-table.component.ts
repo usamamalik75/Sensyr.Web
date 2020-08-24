@@ -44,7 +44,7 @@ export class SensorGroupTableComponent implements OnInit {
     this.sensorService.getSensorGroups(search).subscribe(
       data => {
         this.groupTableModel = data.Data;
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
       },
       error => {
       });

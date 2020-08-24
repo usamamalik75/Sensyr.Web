@@ -5,7 +5,7 @@
     
             <div class="tab-row-btn-group">
                 <a>Add to Group</a>
-                <a class="row-btn--warning">Delete</a>
+                <a class="row-btn--warning" (click)="deleteSensors()">Delete</a>
                 <a class="row-btn--cancel">Cancel</a>
             </div>
         </section>
@@ -25,16 +25,16 @@
 
             <div class="col-md-4 col-sm-12 pd-l-0 mt-6"
                 *ngFor="let individualSensor of item.IndividualSensorResponses | paginate: config">
-                <div class="tab-sensor-card cp" (click)="sensorDetail(individualSensor)">
+                <div class="tab-sensor-card " >
                     <section>
-                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg">
+                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" (click)="sensorDetail(individualSensor)" class="cp">
                         <aside>
-                            <div class="custom-checkbox">
-                                <input class="check" type="checkbox">
+                            <div class="custom-checkbox" >
+                                <input class="check" type="checkbox" (click)="checkSensors($event, individualSensor)">
                             </div>
-                            <h3>Sensor ID: {{individualSensor.SensorId}}</h3>
-                            <h4>{{individualSensor.SensorName}}</h4>
-                            <p class="temp-stats temp-warning--blink">{{individualSensor.SensorTypeName}}
+                            <h3 class="cp" (click)="sensorDetail(individualSensor)">Sensor ID: {{individualSensor.SensorId}}</h3>
+                            <h4 class="cp" (click)="sensorDetail(individualSensor)">{{individualSensor.SensorName}}</h4>
+                            <p (click)="sensorDetail(individualSensor)" class="temp-stats temp-warning--blink cp">{{individualSensor.SensorTypeName}}
                                 <span *ngIf="individualSensor.SensorStatusId === sensorStatusIdEnum.critical"
                                     class="tooltip-top" data-tooltip="Critical!"><img
                                         src="assets/images/alert-blink-icon.png"></span>
@@ -44,7 +44,7 @@
                             </p>
                         </aside>
                     </section>
-                    <div class="d-flex d-flex-temp-stats">
+                    <div (click)="sensorDetail(individualSensor)" class="d-flex d-flex-temp-stats cp">
                         <div>
                             <h3>{{individualSensor.LiveValue}}˚C</h3>
                             <p>Live Value</p>

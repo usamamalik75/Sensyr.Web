@@ -47,17 +47,20 @@ export class BaseService<T> {
   }
 
   delete(id: number, endpoint: string = '', options?: any) {
-    if(options){
+    if (options) {
       return this.httpClient
-      .delete(`${this.url}/${endpoint}`, options);
+        .delete(`${this.url}/${endpoint}`, options);
     }
-    else if (endpoint !== '' && endpoint != null) {
+    else if (endpoint !== '' && endpoint != null && id > 0) {
       return this.httpClient
         .delete(`${this.url}/${endpoint}/${id}`);
-    } else {
+    } else if (id > 0) {
       return this.httpClient
         .delete(`${this.url}/${id}`)
         .pipe(map((data: any) => data as T));
+    } else {
+      return this.httpClient
+      .delete(`${this.url}/${endpoint}`);
     }
   }
 

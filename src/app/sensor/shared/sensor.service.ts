@@ -42,6 +42,10 @@ export class SensorService extends BaseService<any> {
     .pipe(map((data: any) => data));
   }
 
+  getSensorGroupSensorsPerformance(id){
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorGroupSensorsPerformanceEndPoint + '?GroupId=' + id)
+    .pipe(map((data: any) => data));
+  }
   getSensorById(id){
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorByIdEndPoint + '?Id=' + id)
     .pipe(map((data: any) => data));
@@ -80,4 +84,15 @@ export class SensorService extends BaseService<any> {
     return this.http.get(this.urlTest);
   }
 
+  deleteSensor(id) {
+    return this.delete(0, this.apiService.sensorApi + this.sensorEndPoints.deleteSensorsEndPoint + '?Ids=' + id)
+      .pipe(map((data: any) => data));
+  }
+
+  deleteSensors(idsArray) {
+    return this.delete(0, this.apiService.sensorApi + this.sensorEndPoints.deleteSensorsEndPoint + idsArray)
+      .pipe(map((data: any) => data));
+  }
+
+  // http://198.12.229.152/api/Sensor/DeleteSensors?Ids=1&Ids=2&Ids=3
 }

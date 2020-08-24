@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SensorService } from '../shared/sensor.service';
 import { SensorModel } from '../shared/alarm.model';
 import { SharedService } from '@app/shared/services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-sensor-detail-form',
@@ -46,23 +48,45 @@ export class SensorDetailFormComponent implements OnInit {
     VoltageWarningMax: null,
     LastValue: null,
   };
+  sensorId: number;
   constructor(
     private sensorService: SensorService,
     public sharedService: SharedService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private router: Router,
+    private confirmDialogService: ConfirmDialogService,
   ) { }
 
   ngOnInit(): void {
-    const sensorId = this.activatedRoute.snapshot.params.sensorId;
+    this.sensorId = +this.activatedRoute.snapshot.params.sensorId;
     this.sensorTypeName = this.activatedRoute.snapshot.params.sensorTypeName;
-    this.getSensorById(sensorId);
+    this.getSensorById(this.sensorId);
   }
 
   getSensorById(sensorId) {
     this.sensorService.getSensorById(sensorId).subscribe(
       data => {
         this.sensorModel = data.Data;
-        console.log(data);
+        // console.log(data);
+      },
+      error => {
+      });
+  }
+
+
+  deleteSensor() {
+    const result = confirm('Are you sure to delete?');
+    if (result) {
+      this.delete();
+    }
+  }
+
+  delete() {
+    this.sensorService.deleteSensor(this.sensorId).subscribe(
+      data => {
+        this.toastrService.info('Sensor has been deleted successfully!');
+        this.router.navigate(['app', 'sensor']);
       },
       error => {
       });
