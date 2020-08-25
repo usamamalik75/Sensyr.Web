@@ -43,13 +43,24 @@ export class SensorService extends BaseService<any> {
   }
 
   getSensorGroupSensorsPerformance(id){
-    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorGroupSensorsPerformanceEndPoint + '?GroupId=' + id)
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorGroupSensorsPerformanceEndPoint + '?GroupId=' + id + '&PerPage=10000&Page=1')
     .pipe(map((data: any) => data));
   }
   getSensorById(id){
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorByIdEndPoint + '?Id=' + id)
     .pipe(map((data: any) => data));
   }
+
+  getSensorDetailAnalyticsPerformance(id){
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailAnalyticsPerformanceEndPoint + '?Id=' + id)
+    .pipe(map((data: any) => data));
+  }
+
+  getSensorDetailAnalyticsStatus(id){
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailAnalyticsStatusEndPoint + '?Id=' + id)
+    .pipe(map((data: any) => data));
+  }
+
 
   getTotalMachinesGroupsSensors(): Observable<any> {
     this.get(this.apiService.dashboardApi + this.dashboardEndPoints.getTotalMachinesGroupsSensorsEndPoint)

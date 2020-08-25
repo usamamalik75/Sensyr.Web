@@ -2,8 +2,7 @@
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 45,
-    "CriticalValue": 25,
+    "Value": 45,
     "SensorStatusId": 2,
     "SensorStatusName": "Warning",
     "DateTime": "2020-08-25T04:52:58.237"
@@ -11,8 +10,23 @@
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 3,
-    "CriticalValue": 5,
+    "Value": 100,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Critical",
+    "DateTime": "2020-08-25T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 60,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Warning",
+    "DateTime": "2020-08-26T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 40,
     "SensorStatusId": 2,
     "SensorStatusName": "Critical",
     "DateTime": "2020-08-26T04:52:58.237"
@@ -20,17 +34,15 @@
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 100,
-    "CriticalValue": 56,
+    "Value": 90,
     "SensorStatusId": 2,
     "SensorStatusName": "Warning",
-    "DateTime": "2020-08-27T04:52:58.237"
+    "DateTime": "2020-08-28T04:52:58.237"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 0,
-    "CriticalValue": 105,
+    "Value": 110,
     "SensorStatusId": 2,
     "SensorStatusName": "Critical",
     "DateTime": "2020-08-28T04:52:58.237"
@@ -38,29 +50,17 @@
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 2,
-    "CriticalValue": 0,
+    "Value": 20,
     "SensorStatusId": 2,
     "SensorStatusName": "Warning",
-    "DateTime": "2020-08-29T04:52:58.237"
+    "DateTime": "2020-08-28T04:52:58.237"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 65,
-    "CriticalValue": 11,
+    "Value": 10,
     "SensorStatusId": 2,
     "SensorStatusName": "Critical",
-    "DateTime": "2020-08-30T04:52:58.237"
-  },
-  {
-    "SensorId": 8,
-    "Voltage": 10,
-    "WarningValue": 99,
-    "CriticalValue": 20,
-    "SensorStatusId": 2,
-    "SensorStatusName": "Warning",
-    "DateTime": "2020-08-31T04:52:58.237"
+    "DateTime": "2020-08-28T04:52:58.237"
   }
-
 ]

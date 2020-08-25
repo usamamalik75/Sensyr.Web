@@ -7,6 +7,9 @@ export class SensorEndPoints {
     public readonly getSensorByIdEndPoint = 'getSensorById';
     public readonly getSensorGroupSensorsPerformanceEndPoint = 'GetSensorGroupSensorsPerformance';
     public readonly deleteSensorsEndPoint = 'DeleteSensors';
+    public readonly getSensorDetailAnalyticsPerformanceEndPoint = 'GetSensorDetailAnalyticsPerformance';
+    public readonly getSensorDetailAnalyticsStatusEndPoint = 'GetSensorDetailAnalyticsStatus';
+    
 }
 
 export class DashboardEndPoints {

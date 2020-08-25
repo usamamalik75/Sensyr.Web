@@ -16,12 +16,33 @@ export class SensorAlarmTableComponent implements OnInit {
     private sensorService: SensorService
   ) { }
 
+  public data = [
+    { name: 'Ajay', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'Jas', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'Jas', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'Jas', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
+  ];
+  dtOptions: any = {};
+  dtOptions2: any = {};
   ngOnInit(): void {
     this.sensorStatusEnum = SensorStatusEnum;
     this.getAlaramDetails();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [5, 10, 25],
+      processing: true
+    };
   }
 
-  getAlaramDetails(){
+  getAlaramDetails() {
     this.sensorService.getAlaramDetails().subscribe(
       data => {
         this.alarmModel = data.Data;
@@ -29,5 +50,10 @@ export class SensorAlarmTableComponent implements OnInit {
       error => {
       });
   }
+
+
+
+
+
 
 }

@@ -15,7 +15,7 @@ import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confi
     NgxPaginationModule,
     NgbModule,
     HighchartsChartModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -23,7 +23,9 @@ import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confi
     NgbModule,
     ModalModule,
     HighchartsChartModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+}
