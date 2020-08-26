@@ -90,21 +90,7 @@ export class SensorAlarmDetailComponent implements OnInit {
       chart.paddingRight = 20;
       const data = [];
       for (let i = 0; i < values.length; i++) {
-        if (div == 'chartdiv') {
-          const today = new Date();
-          const tomorrow = new Date();
-          tomorrow.setDate(today.getDate() + (i + 1));
-          data.push({ date: tomorrow, name: 'name' + i, value: values[i].LiveValue - (i * 2) });//values[i].Datetime
-        }
-        if (div == 'chartdivWarning') {
-          const today = new Date();
-          const tomorrow = new Date();
-          tomorrow.setDate(today.getDate());
-          data.push({ date: tomorrow, name: 'name' + i, value: values[i].LiveValue - (i * 5) });//values[i].Datetime
-
-        } else {
-          data.push({ date: values[i].Datetime, name: 'name' + i, value: values[i].LiveValue - (i * 2) });//values[i].Datetime
-        }
+          data.push({ date: values[i].Datetime, name: 'name' + i, value: values[i].LiveValue });
       }
       chart.data = data;
       // Create axes
