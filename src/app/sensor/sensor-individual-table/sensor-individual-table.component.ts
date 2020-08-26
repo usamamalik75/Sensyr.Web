@@ -4,6 +4,7 @@ import { IndividualTableModel } from '../shared/alarm.model';
 import { SensorStatusIdEnum, ConstantService } from '@app/shared/services';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/confirm-dialog.service';
 
 @Component({
   selector: 'app-sensor-individual-table',
@@ -28,7 +29,8 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
     private sensorService: SensorService,
     private constantSetvice: ConstantService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 
   ngOnInit(): void {
@@ -97,11 +99,12 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
   }
 
   deleteSensors() {
-    const result = confirm('Are you sure to delete?');
-    if (result) {
+    this.confirmDialogService.confirmThis('Are you sure to delete?', () => {
       this.delete();
-    }
+    }, () => {
+    });
   }
+
   delete() {
 
     let idsArray: string;

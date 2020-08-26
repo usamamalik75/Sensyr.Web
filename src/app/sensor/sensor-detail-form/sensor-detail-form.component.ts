@@ -5,6 +5,7 @@ import { SharedService } from '@app/shared/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/confirm-dialog.service';
+import { ModalService } from '@app/shared/_modal/modal.service';
 
 @Component({
   selector: 'app-sensor-detail-form',
@@ -75,11 +76,12 @@ export class SensorDetailFormComponent implements OnInit {
   }
 
 
+
   deleteSensor() {
-    const result = confirm('Are you sure to delete?');
-    if (result) {
+    this.confirmDialogService.confirmThis('Are you sure to delete?', () => {
       this.delete();
-    }
+    }, () => {
+    });
   }
 
   delete() {
