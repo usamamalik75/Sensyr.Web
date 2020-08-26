@@ -87,7 +87,7 @@ export class SensorGroupFormComponent implements OnInit, AfterViewInit, OnDestro
     this.sensorService.getTestDetail().subscribe(
       data => {
         this.graphData = data.Data;
-        // this.graph(data.Items);
+        // this.lineGraph(data);
       });
   }
 
@@ -96,7 +96,7 @@ export class SensorGroupFormComponent implements OnInit, AfterViewInit, OnDestro
     // Chart code goes in here
     this.browserOnly(() => {
       am4core.useTheme(am4themes_animated);
-      const chart = am4core.create('chartdiv', am4charts.XYChart);
+      const chart = am4core.create('chartgroupdiv', am4charts.XYChart);
       chart.paddingRight = 20;
       const data = [];
       for (let i = 0; i < values.length; i++) {
@@ -121,6 +121,67 @@ export class SensorGroupFormComponent implements OnInit, AfterViewInit, OnDestro
       const scrollbarX = new am4charts.XYChartScrollbar();
       scrollbarX.series.push(series);
       chart.scrollbarX = scrollbarX;
+
+      const bullet = series.bullets.push(new am4charts.CircleBullet());
+      bullet.circle.strokeWidth = 2;
+      bullet.circle.radius = 3;
+      bullet.circle.strokeOpacity = 0;
+      bullet.tooltipText = '{valueY}';
+      const bullethover = bullet.states.create('hover');
+      bullethover.properties.scale = 1.5;
+
+      bullet.adapter.add('fill', function (fill, target) {
+        if (target.dataItem['valueY'] <= 20) {
+          return am4core.color('#E87A7A');
+        }
+        else if (target.dataItem['valueY'] >= 21 && target.dataItem['valueY'] <= 40) {
+          return am4core.color('#FFBD2F');
+        }
+        else if (target.dataItem['valueY'] >= 41 && target.dataItem['valueY'] <= 60) {
+
+          return am4core.color('#5CB592');
+        }
+
+        else if (target.dataItem['valueY'] >= 61 && target.dataItem['valueY'] <= 80) {
+
+          return am4core.color('#FFBD2F');
+        }
+        else {
+          return am4core.color('#E87A7A');
+        }
+        return fill;
+      })
+
+      const range = valueAxis.createSeriesRange(series);
+      range.value = 0;
+      range.endValue = 20;
+      range.contents.stroke = am4core.color('#E87A7A');
+      range.contents.fill = range.contents.stroke;
+
+      const range1 = valueAxis.createSeriesRange(series);
+      range1.value = 21;
+      range1.endValue = 40;
+      range1.contents.stroke = am4core.color('#FFBD2F');
+      range1.contents.fill = range1.contents.stroke;
+
+      const range2 = valueAxis.createSeriesRange(series);
+      range2.value = 41;
+      range2.endValue = 60;
+      range2.contents.stroke = am4core.color('#5CB592');
+      range2.contents.fill = range2.contents.stroke;
+
+      const range3 = valueAxis.createSeriesRange(series);
+      range3.value = 61;
+      range3.endValue = 80;
+      range3.contents.stroke = am4core.color('#FFBD2F');
+      range3.contents.fill = range3.contents.stroke;
+
+      const range4 = valueAxis.createSeriesRange(series);
+      range4.value = 81;
+      range4.endValue = 1000;
+      range4.contents.stroke = am4core.color('#E87A7A');
+      range4.contents.fill = range4.contents.stroke;
+
 
       this.chart = chart;
     });
