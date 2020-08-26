@@ -1,0 +1,35 @@
+<div class="headingGridFilter">
+    <div class="col-md-4 pd-l-0">
+        <div class="fourBoxColumn main-alarm">
+            <div class="alarm-left">
+                <h2> {{criticalCount}} </h2>
+                <p>Critical Alarms</p>
+            </div>
+            <div class="alarm-right">
+                <div id="chartdiv" class="chart-area"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 pd-l-0">
+        <div class="main-alarm fourBoxColumn yellowBox">
+            <div class="alarm-left">
+                <h2> {{warningCount}} </h2>
+                <p>Warnings Breached</p>
+            </div>
+            <div class="alarm-right">
+                <div id="chartdivWarning" class="chart-area"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 pd-0">
+        <div class="main-alarm fourBoxColumn greenBox">
+            <div class="alarm-left">
+            <h2> {{inPrgressCount}} </h2>
+            <p>In Progress</p>
+        </div>
+        <div class="alarm-right">
+            <div id="chartdivInProgress" class="chart-area"></div>
+        </div>
+        </div>
+    </div>
+</div>

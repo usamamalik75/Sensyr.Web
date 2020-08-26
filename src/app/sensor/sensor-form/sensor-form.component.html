@@ -21,26 +21,11 @@
         </ul>
     </div>
 
-    <div class="headingGridFilter">
-        <div class="col-md-4 pd-l-0">
-            <div class="fourBoxColumn">
-                <h2> {{criticalCount}} </h2>
-                <p>Critical Alarms</p>
-            </div>
-        </div>
-        <div class="col-md-4 pd-l-0">
-            <div class="fourBoxColumn yellowBox">
-                <h2> {{warningCount}} </h2>
-                <p>Warnings Breached</p>
-            </div>
-        </div>
-        <div class="col-md-4 pd-0">
-            <div class="fourBoxColumn greenBox">
-                <h2> {{inPrgressCount}} </h2>
-                <p>In Progress</p>
-            </div>
-        </div>
-    </div>
+  
+
+    <!-- Sensor Alarm Detail -->
+    <app-sensor-alarm-detail></app-sensor-alarm-detail>
+    <!-- Sensor Alarm Detail Table -->
 
     <!-- Sensor and Machine Table -->
     <app-sensor-alarm-table></app-sensor-alarm-table>

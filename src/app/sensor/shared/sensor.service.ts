@@ -32,6 +32,12 @@ export class SensorService extends BaseService<any> {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getAlarmsEndPoint)
       .pipe(map((data: any) => data));
   }
+
+  getTotalAlarmsStatuses(): Observable<any> {
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getTotalAlarmsStatusesEndPoint)
+      .pipe(map((data: any) => data));
+  }
+
   getAlarmsStatuses(): Observable<any> {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getAlarmsStatusesEndPoint)
       .pipe(map((data: any) => data));

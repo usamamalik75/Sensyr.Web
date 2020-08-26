@@ -25810,9 +25810,9 @@ body.basic-timeline .panel-clone {
 }
 .fourBoxColumn{
   border-radius: 8px;
-  padding: 22px 100px 22px 80px;
+  padding: 22px 10px 22px 80px;
   margin:24px 0;
-  background-image: url("../images/icon-critical-alarms.svg"), url("../images/critical-icon-graph.svg");
+  background-image: url("../images/icon-critical-alarms.svg");
   background-position: 15px center, 94% center;
   background-repeat: no-repeat, no-repeat;
   background-color: #fef8f8;
@@ -25940,7 +25940,7 @@ body.basic-timeline .panel-clone {
 .fourBoxColumn.yellowBox{
   background-color:#fffcf5;
   border-left:2px solid #FFBD2F;
-  background-image: url("../images/icon-warnings-breached.svg"), url("../images/warning-breached-graph.svg");
+  background-image: url("../images/icon-warnings-breached.svg");
 }
 .fourBoxColumn.yellowBox p, .fourBoxColumn.yellowBox h2{
   color: #FFBD2F;
@@ -25948,7 +25948,7 @@ body.basic-timeline .panel-clone {
 .fourBoxColumn.greenBox{
   background-color:#f7fbfa;
   border-left:2px solid #5CB592;
-  background-image: url("../images/icon-in-progress.svg"), url("../images/in-progress-graph.svg");
+  background-image: url("../images/icon-in-progress.svg");
 }
 .fourBoxColumn.greenBox p, .fourBoxColumn.greenBox h2{
   color: #5CB592;
