@@ -2,65 +2,145 @@
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 45,
-    "CriticalValue": 25,
+    "Value": 60,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
     "SensorStatusId": 2,
-    "SensorStatusName": "Warning",
-    "DateTime": "2020-08-25T04:52:58.237"
+    "DateTime": "2020-08-26T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 3,
-    "CriticalValue": 5,
-    "SensorStatusId": 2,
-    "SensorStatusName": "Critical",
-    "DateTime": "2020-08-26T04:52:58.237"
+    "Value": 55,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 1,
+    "DateTime": "2020-08-27T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 100,
-    "CriticalValue": 56,
-    "SensorStatusId": 2,
-    "SensorStatusName": "Warning",
-    "DateTime": "2020-08-27T04:52:58.237"
+    "Value": 63,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 1,
+    "DateTime": "2020-08-28T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 0,
-    "CriticalValue": 105,
+    "Value": 46,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
     "SensorStatusId": 2,
-    "SensorStatusName": "Critical",
-    "DateTime": "2020-08-28T04:52:58.237"
+    "DateTime": "2020-08-30T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 2,
-    "CriticalValue": 0,
-    "SensorStatusId": 2,
-    "SensorStatusName": "Warning",
-    "DateTime": "2020-08-29T04:52:58.237"
+    "Value": 89,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 3,
+    "DateTime": "2020-08-31T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 65,
-    "CriticalValue": 11,
-    "SensorStatusId": 2,
-    "SensorStatusName": "Critical",
-    "DateTime": "2020-08-30T04:52:58.237"
+    "Value": 2,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 3,
+    "DateTime": "2020-09-01T08:17:01.403"
   },
   {
     "SensorId": 8,
     "Voltage": 10,
-    "WarningValue": 99,
-    "CriticalValue": 20,
+    "Value": 9,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
     "SensorStatusId": 2,
-    "SensorStatusName": "Warning",
-    "DateTime": "2020-08-31T04:52:58.237"
+    "DateTime": "2020-09-05T08:17:01.403"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 22,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 2,
+    "DateTime": "2020-09-06T08:17:01.403"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 98,
+    "CriticalMin": 0,
+    "CriticalMax": 45,
+    "WarningMin": 15,
+    "WarningMax": 30,
+    "SafeZone": 0,
+    "SensorStatusId": 1,
+    "DateTime": "2020-09-07T08:17:01.403"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 98,
+    "CriticalMin": 0,
+    "CriticalMax": 65,
+    "WarningMin": 15,
+    "WarningMax": 15,
+    "SafeZone": 0,
+    "SensorStatusId": 1,
+    "DateTime": "2020-09-07T08:20:01.403"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 98,
+    "CriticalMin": 0,
+    "CriticalMax": 55,
+    "WarningMin": 15,
+    "WarningMax": 20,
+    "SafeZone": 0,
+    "SensorStatusId": 1,
+    "DateTime": "2020-09-07T08:37:01.403"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 35,
+    "CriticalMin": 0,
+    "CriticalMax": 90,
+    "WarningMin": 15,
+    "WarningMax": 80,
+    "SafeZone": 0,
+    "SensorStatusId": 3,
+    "DateTime": "2020-09-10T08:17:01.403"
   }
-
 ]

@@ -106,7 +106,10 @@ export class SensorGroupFormComponent implements OnInit, AfterViewInit, OnDestro
       chart.mouseWheelBehavior = 'zoomXY';
       const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
-
+      dateAxis.baseInterval = {
+        'timeUnit': 'minute',
+        'count': 1
+      };
       const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.tooltip.disabled = true;
       valueAxis.renderer.minWidth = 35;

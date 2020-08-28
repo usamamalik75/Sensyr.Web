@@ -85,7 +85,7 @@ export class SensorAlarmDetailComponent implements OnInit {
     // Chart code goes in here
     this.browserOnly(() => {
       const chart = am4core.create(div, am4charts.XYChart);
-      chart.background.fill = am4core.color(bg);
+      // chart.background.fill = am4core.color(bg);
       chart.background.opacity = 0.3;
       chart.paddingRight = 20;
       const data = [];

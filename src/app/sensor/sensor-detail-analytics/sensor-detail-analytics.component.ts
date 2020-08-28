@@ -17,6 +17,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
 
   chart: am4charts.XYChart;
   categoryAxis: any;
+  dateAxis: any;
   valueAxis: any;
   currentBar: any;
   sensorId: number;
@@ -41,14 +42,14 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
     this.sensorId = +this.activatedRoute.snapshot.params.sensorId;
     this.getSensorDetailAnalyticsPerformance();
     this.getSensorDetailAnalyticsStatus();
-    // this.getTestDetail();
+    this.getTestDetail();
 
   }
 
   getSensorDetailAnalyticsPerformance() {
     this.sensorService.getSensorDetailAnalyticsPerformance(this.sensorId).subscribe(
       data => {
-        console.log(JSON.stringify(data.Data));
+        // console.log(JSON.stringify(data.Data));
         this.lineGraph(data.Data);
       },
       error => {
@@ -58,8 +59,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   getSensorDetailAnalyticsStatus() {
     this.sensorService.getSensorDetailAnalyticsStatus(this.sensorId).subscribe(
       data => {
-        // console.log(JSON.stringify(data.Data));
-        this.drawWithData(data);
+        console.log(JSON.stringify(data));
+        // this.drawWithData(data);
       },
       error => {
       });
@@ -68,7 +69,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   private getTestDetail() {
     this.sensorService.getTestDetail().subscribe(
       data => {
-        this.lineGraph(data);
+        // this.lineGraph(data);
+        this.drawWithData(data);
       });
   }
 
@@ -87,6 +89,10 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
       chart.mouseWheelBehavior = 'zoomXY';
       const dateAxis = chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
+      dateAxis.baseInterval = {
+        'timeUnit': 'minute',
+        'count': 1
+      };
 
       const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.tooltip.disabled = true;
@@ -173,15 +179,15 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
     const series = this.chart.series.push(new am4charts.ColumnSeries());
     series.name = name;
     series.dataFields.valueY = field;
-    series.dataFields.categoryX = 'DateTime';
+    series.dataFields.dateX = 'DateTime';
     series.sequencedInterpolation = true;
     series.columns.template.fillOpacity = 0.5;
-
+    // series.columns.template.width = am4core.percent(70);
     series.stacked = true;
 
-    series.columns.template.width = am4core.percent(60);
+    series.columns.template.width = am4core.percent(10);
     series.columns.template.tooltipText =
-      '[bold]{name}[/]\n[font-size:14px]{categoryX}: {valueY}';
+      '[bold]{name}[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
 
     return series;
   }
@@ -189,19 +195,22 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   drawWithData(data) {
     this.zone.runOutsideAngular(() => {
       this.chart = am4core.create('chartdiv2', am4charts.XYChart);
+      data.forEach(element => {
+        element.DateTime = new Date(element.DateTime);
+      });
       this.chart.data = data;
-
-      this.categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis());
-      this.categoryAxis.dataFields.category = 'DateTime';
-      this.categoryAxis.renderer.grid.template.location = 0;
+      this.chart.mouseWheelBehavior = 'zoomXY';
+      this.dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
+      this.dateAxis.renderer.cellStartLocation = 0.2;
+      this.dateAxis.renderer.cellEndLocation = 0.8;
 
       this.valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
       this.valueAxis.renderer.inside = true;
       this.valueAxis.renderer.labels.template.disabled = true;
       this.valueAxis.min = 0;
 
-      this.createSeries('WarningValue', 'Warning');
-      this.createSeries('CriticalValue', 'Critical');
+      this.createSeries('WarningMax', 'Warning');
+      this.createSeries('CriticalMax', 'Critical');
     });
   }
 
