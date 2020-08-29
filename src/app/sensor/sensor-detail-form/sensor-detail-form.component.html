@@ -1,9 +1,15 @@
 <div class="box-rounded">
     <div class="col-md-12 pd-0 box-container">
         <div class="tab-sensor-card-detail box-container">
-
+            <div id="myModal" [class]="isImgExpand? 'image-modal display-block' : 'image-modal display-none'">
+                <span class="close cp" (click)="imageExpand(false)">&times;</span>
+                <img class="image-modal-content" src="assets/images/sensor-machine/lg/Bearingless-wheelset.jpg" id="img01">
+                <div id="caption"></div>
+            </div>
             <section>
-                <img src="assets/images/sensor-machine/lg/Bearingless-wheelset.jpg">
+                <img src="assets/images/sensor-machine/lg/Bearingless-wheelset.jpg" class="cp" (click)="imageExpand(true)">
+                
+
                 <aside>
                     <h2>{{sensorModel.SensorName}}</h2>
                     <h3>Sensor ID: {{sensorModel.SensorId}} • Machine: {{sensorModel.MachineName}}</h3>
@@ -12,6 +18,7 @@
                     <div class="btn-group">
                         <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
                             <img src="assets/images/icon-dots.png">
+                        
                         </span>
                         <ul class="dropdown-menu pull-right" role="menu">
                             <li>

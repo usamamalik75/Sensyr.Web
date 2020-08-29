@@ -18,9 +18,9 @@
                 </ul>
                 <div class="tab-sensor-head-form">
                     <input type="search" *ngIf="!isSensorGroup" placeholder="Search sensor by name or machine"
-                        formControlName="searchText" (keyup.enter)="search()">
+                        formControlName="searchText" (keyup)="search()">
                     <input type="search" *ngIf="isSensorGroup" placeholder="Search sensor by name or machine"
-                        formControlName="searchGroupText" (keyup.enter)="search()">
+                        formControlName="searchGroupText" (keyup)="search()">
                     <select>
                         <option>Filter By</option>
                     </select>

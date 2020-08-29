@@ -50,6 +50,7 @@ export class SensorDetailFormComponent implements OnInit {
     LastValue: null,
   };
   sensorId: number;
+  isImgExpand: any;
   constructor(
     private sensorService: SensorService,
     public sharedService: SharedService,
@@ -92,6 +93,10 @@ export class SensorDetailFormComponent implements OnInit {
       },
       error => {
       });
+  }
+
+  imageExpand(val){
+    this.isImgExpand = val;
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { SensorService } from '../shared/sensor.service';
 import { TotalMachineSensor } from '../shared/alarm.model';
+import { SignalRService } from '@app/shared/services';
 
 @Component({
   selector: 'app-sensor-table',
@@ -19,13 +20,15 @@ export class SensorTableComponent implements OnInit {
 
   constructor(
     private sensorService: SensorService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private signalRService: SignalRService
 
   ) { }
 
   ngOnInit(): void {
     this.bindForm();
     this.getTotalMachinesGroupsSensors();
+    this.subscribeMethod();
   }
 
   private bindForm() {
@@ -72,4 +75,15 @@ export class SensorTableComponent implements OnInit {
     }
     // this.sensorTableForm.controls.searchText.setValue(null);
   }
+
+  subsGetAlarmTable(){
+    // this.signalRService.sendToUser();
+  }
+
+  subscribeMethod(){
+    this.signalRService.alarmTableEvent.subscribe((data: any) => {
+        console.log(data);
+    });
+  }
+
 }

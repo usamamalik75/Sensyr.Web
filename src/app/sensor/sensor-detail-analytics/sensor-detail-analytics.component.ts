@@ -41,8 +41,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sensorId = +this.activatedRoute.snapshot.params.sensorId;
     this.getSensorDetailAnalyticsPerformance();
-    this.getSensorDetailAnalyticsStatus();
-    this.getTestDetail();
+    // this.getSensorDetailAnalyticsStatus();
+    // this.getTestDetail();
 
   }
 
@@ -51,6 +51,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
       data => {
         // console.log(JSON.stringify(data.Data));
         this.lineGraph(data.Data);
+        this.drawWithData(data.Data);
       },
       error => {
       });
@@ -59,8 +60,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   getSensorDetailAnalyticsStatus() {
     this.sensorService.getSensorDetailAnalyticsStatus(this.sensorId).subscribe(
       data => {
-        console.log(JSON.stringify(data));
-        // this.drawWithData(data);
+        // console.log(JSON.stringify(data));
+        this.drawWithData(data);
       },
       error => {
       });
@@ -175,7 +176,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
 
 
 
-  createSeries(field, name) {
+  createSeries(field, name, color) {
     const series = this.chart.series.push(new am4charts.ColumnSeries());
     series.name = name;
     series.dataFields.valueY = field;
@@ -188,6 +189,21 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
     series.columns.template.width = am4core.percent(10);
     series.columns.template.tooltipText =
       '[bold]{name}[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
+
+    series.heatRules.push({
+      'target': series.columns.template,
+      'property': 'fill',
+      'min': am4core.color(color),
+      'max': am4core.color(color),
+      'dataField': 'valueY'
+    });
+    series.heatRules.push({
+      'target': series.columns.template,
+      'property': 'stroke',
+      'min': am4core.color(color),
+      'max': am4core.color(color),
+      'dataField': 'valueY'
+    });
 
     return series;
   }
@@ -209,8 +225,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
       this.valueAxis.renderer.labels.template.disabled = true;
       this.valueAxis.min = 0;
 
-      this.createSeries('WarningMax', 'Warning');
-      this.createSeries('CriticalMax', 'Critical');
+      this.createSeries('WarningMax', 'Warning', '#FFBD2F');
+      this.createSeries('CriticalMax', 'Critical', '#E87A7A');
     });
   }
 
