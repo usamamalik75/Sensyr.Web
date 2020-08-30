@@ -4,7 +4,7 @@ import { environment } from '@env/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BaseService } from '@app/shared/services/base.service';
-import { ApiService } from '@app/shared/services';
+import { ApiService, SensorStatusIdEnum } from '@app/shared/services';
 import { SensorEndPoints, DashboardEndPoints } from '@app/shared/endpoints/sensor';
 
 @Injectable({
@@ -43,38 +43,38 @@ export class SensorService extends BaseService<any> {
       .pipe(map((data: any) => data));
   }
 
-  getSensorsByGroupId(id){
+  getSensorsByGroupId(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorsByGroupIdEndPoint + '?Id=' + id)
-    .pipe(map((data: any) => data));
+      .pipe(map((data: any) => data));
   }
 
-  getSensorGroupSensorsPerformance(id){
+  getSensorGroupSensorsPerformance(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorGroupSensorsPerformanceEndPoint + '?GroupId=' + id + '&PerPage=10000&Page=1')
-    .pipe(map((data: any) => data));
+      .pipe(map((data: any) => data));
   }
-  getSensorById(id){
+  getSensorById(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorByIdEndPoint + '?Id=' + id)
-    .pipe(map((data: any) => data));
+      .pipe(map((data: any) => data));
   }
 
-  getSensorDetailAnalyticsPerformance(id){
+  getSensorDetailAnalyticsPerformance(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailAnalyticsPerformanceEndPoint + '?Id=' + id)
-    .pipe(map((data: any) => data));
+      .pipe(map((data: any) => data));
   }
 
-  getSensorDetailAnalyticsStatus(id){
+  getSensorDetailAnalyticsStatus(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailAnalyticsStatusEndPoint + '?Id=' + id)
-    .pipe(map((data: any) => data));
+      .pipe(map((data: any) => data));
   }
 
 
   getTotalMachinesGroupsSensors(): Observable<any> {
     this.get(this.apiService.dashboardApi + this.dashboardEndPoints.getTotalMachinesGroupsSensorsEndPoint)
-    .subscribe(data => {
-      this.SelectedUser$.next(data);
-    });
+      .subscribe(data => {
+        this.SelectedUser$.next(data);
+      });
     return this.SelectedUser$;
-      // .pipe(map((data: any) => data));
+    // .pipe(map((data: any) => data));
   }
 
   getIndividualSensors(config: any, search?: any): Observable<any> {
@@ -109,6 +109,56 @@ export class SensorService extends BaseService<any> {
   deleteSensors(idsArray) {
     return this.delete(0, this.apiService.sensorApi + this.sensorEndPoints.deleteSensorsEndPoint + idsArray)
       .pipe(map((data: any) => data));
+  }
+
+  updateSensor(sensor, data) {
+    sensor.SensorId = data.sensorId;
+    sensor.Voltage = data.voltage;
+    sensor.LiveValue = data.liveValue;
+    sensor.SensorStatusId = data.sensorStatusId;
+    sensor.SensorStatusName = data.sensorStatusName;
+    sensor.DateTime = data.dateTime;
+    sensor.Avg = data.avg;
+    sensor.DayMin = data.dayMin;
+    sensor.DayMax = data.dayMax;
+    sensor.TimeElapsed = data.timeElapsed;
+    sensor.SensorName = data.sensorName;
+    sensor.SensorTypeName = data.sensorTypeName;
+    sensor.MachineName = data.machineName;
+  }
+
+
+  addRemoveSensor(sensor, data, model) {
+    let isNew = false;
+    let isRemove = false;
+    if (data.sensorStatusId === SensorStatusIdEnum.stable) {
+      isRemove = true;
+      if (model) {
+        const index = model.findIndex(x => x.SensorId === data.sensorId);
+        if (index > -1) {
+          model.splice(index, 1);
+        }
+      }
+    } else if (!sensor) {
+      sensor = {};
+      isNew = true;
+      sensor.SensorId = data.sensorId;
+      sensor.Voltage = data.voltage;
+      sensor.LiveValue = data.liveValue;
+      sensor.SensorStatusId = data.sensorStatusId;
+      sensor.SensorStatusName = data.sensorStatusName;
+      sensor.DateTime = data.dateTime;
+      sensor.Avg = data.avg;
+      sensor.DayMin = data.dayMin;
+      sensor.DayMax = data.dayMax;
+      sensor.TimeElapsed = data.timeElapsed;
+      sensor.SensorName = data.sensorName;
+      sensor.SensorTypeName = data.sensorTypeName;
+      sensor.MachineName = data.machineName;
+      if (model) {
+        model.push(sensor);
+      }
+    }
   }
 
   // http://198.12.229.152/api/Sensor/DeleteSensors?Ids=1&Ids=2&Ids=3

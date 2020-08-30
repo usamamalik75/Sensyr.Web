@@ -21,14 +21,12 @@ export class SensorTableComponent implements OnInit {
   constructor(
     private sensorService: SensorService,
     private formBuilder: FormBuilder,
-    private signalRService: SignalRService
 
   ) { }
 
   ngOnInit(): void {
     this.bindForm();
     this.getTotalMachinesGroupsSensors();
-    this.subscribeMethod();
   }
 
   private bindForm() {
@@ -76,14 +74,5 @@ export class SensorTableComponent implements OnInit {
     // this.sensorTableForm.controls.searchText.setValue(null);
   }
 
-  subsGetAlarmTable(){
-    // this.signalRService.sendToUser();
-  }
-
-  subscribeMethod(){
-    this.signalRService.alarmTableEvent.subscribe((data: any) => {
-        console.log(data);
-    });
-  }
 
 }

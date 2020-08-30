@@ -187,7 +187,11 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
     // series.columns.template.width = am4core.percent(70);
     series.stacked = true;
 
-    series.columns.template.width = am4core.percent(10);
+    series.columns.template.width = am4core.percent(70);
+
+    const scrollbarX = new am4charts.XYChartScrollbar();
+    scrollbarX.series.push(series);
+    this.chart.scrollbarX = scrollbarX;
     // series.columns.template.tooltipText =
     //   '[bold]{name}[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
 
@@ -234,6 +238,9 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
         element.DateTime = new Date(element.DateTime);
       });
       this.chart.mouseWheelBehavior = 'zoomXY';
+
+ 
+
       const dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
       dateAxis.renderer.grid.template.location = 0;
       dateAxis.baseInterval = {

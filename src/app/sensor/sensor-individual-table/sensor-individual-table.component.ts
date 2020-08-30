@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, EventEmitter, AfterViewInit } from '@angular/core';
 import { SensorService } from '../shared/sensor.service';
 import { IndividualTableModel } from '../shared/alarm.model';
-import { SensorStatusIdEnum, ConstantService } from '@app/shared/services';
+import { SensorStatusIdEnum, ConstantService, SignalRService } from '@app/shared/services';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/confirm-dialog.service';
@@ -11,7 +11,7 @@ import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/conf
   templateUrl: './sensor-individual-table.component.html',
   styleUrls: ['./sensor-individual-table.component.scss']
 })
-export class SensorIndividualTableComponent implements OnInit, OnDestroy {
+export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterViewInit {
   individualTableModel: IndividualTableModel[] = [];
   sensorStatusIdEnum: typeof SensorStatusIdEnum;
 
@@ -30,7 +30,8 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
     private constantSetvice: ConstantService,
     private router: Router,
     private toastrService: ToastrService,
-    private confirmDialogService: ConfirmDialogService
+    private confirmDialogService: ConfirmDialogService,
+    private signalRService: SignalRService,
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +39,10 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
     this.getIndividualSensors();
     // this.getTestDetail();
     this.searchEvent();
+  }
+
+  ngAfterViewInit() {
+    this.subscribeMethod();
   }
 
   searchEvent() {
@@ -81,7 +86,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  onPageChange(event){
+  onPageChange(event) {
     this.config.currentPage = event;
     this.getIndividualSensors(this.searchText);
   }
@@ -123,6 +128,22 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy {
       },
       error => {
       });
+  }
+
+
+  subscribeMethod() {
+    const items = 'Items';
+    this.signalRService.alarmTableSubject.subscribe(data => {
+      if (data && data != null) {
+        this.individualTableModel[items].forEach(item => {
+          const sensor = item.IndividualSensorResponses.find(x => x.SensorId === data.sensorId);
+          if (sensor.SensorStatusId !== data.sensorStatusId) {
+            this.sensorService.updateSensor(sensor, data);
+          }
+        });
+      }
+      // console.log(data);
+    });
   }
 
 }

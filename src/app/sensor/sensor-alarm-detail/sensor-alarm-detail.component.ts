@@ -72,9 +72,15 @@ export class SensorAlarmDetailComponent implements OnInit {
         const warning = data.Data.Items.find(x => x.AlarmStatusName === SensorStatusEnum.warning);
         const inPrgress = data.Data.Items.find(x => x.AlarmStatusName === SensorStatusEnum.inProgress);
         const critical = data.Data.Items.find(x => x.AlarmStatusName === SensorStatusEnum.critical);
-        this.lineGraph(critical.AlarmSensorStatusResponses, '#E87A7A', '#ED3E3D', 'chartdiv');
-        this.lineGraph(warning.AlarmSensorStatusResponses, '#f5ce7b', '#FFBD2F', 'chartdivWarning');
-        this.lineGraph(inPrgress.AlarmSensorStatusResponses, '#81bfa7', '#5CB592', 'chartdivInProgress');
+        if (critical && critical.AlarmSensorStatusResponses) {
+          this.lineGraph(critical.AlarmSensorStatusResponses, '#E87A7A', '#ED3E3D', 'chartdiv');
+        }
+        if (warning && warning.AlarmSensorStatusResponses) {
+          this.lineGraph(warning.AlarmSensorStatusResponses, '#f5ce7b', '#FFBD2F', 'chartdivWarning');
+        }
+        if (inPrgress && inPrgress.AlarmSensorStatusResponses) {
+          this.lineGraph(inPrgress.AlarmSensorStatusResponses, '#81bfa7', '#5CB592', 'chartdivInProgress');
+        }
         // this.manageCount();
       },
       error => {

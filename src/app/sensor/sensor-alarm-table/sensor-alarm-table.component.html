@@ -33,7 +33,7 @@
                         <td>{{alarm.DayMax}}</td>
                         <td>
                             <span
-                                [class]="alarm.SensorStatusName === sensorStatusEnum.critical? 'btn-critical-grid' : 'btn-warning-grid'">{{alarm.SensorStatusName}}</span>
+                                [class]="alarm.SensorStatusName === sensorStatusEnum.critical? 'btn-critical-grid' : alarm.SensorStatusName === sensorStatusEnum.warning? 'btn-warning-grid' : 'btn-inprogress-grid'">{{alarm.SensorStatusName}}</span>
                         </td>
                         <td class="gridActionBtn">
                             <div class="btn-group">

@@ -11139,7 +11139,7 @@ tbody.collapse.in {
   line-height: 1.49;
   white-space: nowrap;
 }
-.btn-warning-grid, .btn-critical-grid{
+.btn-warning-grid, .btn-critical-grid, .btn-inprogress-grid {
   background: #fff8ea;
   border-radius: 18px;
   display:inline-block;
@@ -11154,6 +11154,10 @@ tbody.collapse.in {
 .btn-critical-grid{
   background: #fdf2f2;
   color:#E87A7A;
+}
+.btn-inprogress-grid{
+  background: #f7fbfa;
+  color:#5CB592;
 }
 .grid-action-icon .dropdown-menu{
   padding:15px;
