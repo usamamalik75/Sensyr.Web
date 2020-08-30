@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -6,12 +6,14 @@ import { map } from 'rxjs/operators';
 import { BaseService } from '@app/shared/services/base.service';
 import { ApiService, SensorStatusIdEnum } from '@app/shared/services';
 import { SensorEndPoints, DashboardEndPoints } from '@app/shared/endpoints/sensor';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SensorService extends BaseService<any> {
 
+  alarmCountEvent = new EventEmitter<any>();
   private urlTest = 'assets/json/test.json';
   public SelectedUser$: BehaviorSubject<any> = new BehaviorSubject({} as any);
   constructor(
@@ -22,7 +24,8 @@ export class SensorService extends BaseService<any> {
     private http: HttpClient,
     private httpBackend: HttpBackend,
     private constantService: HttpBackend,
-  ) {
+    private toastrService: ToastrService
+    ) {
     super(
       httpClient,
       environment.api_sensor_uri);
@@ -125,23 +128,22 @@ export class SensorService extends BaseService<any> {
     sensor.SensorName = data.sensorName;
     sensor.SensorTypeName = data.sensorTypeName;
     sensor.MachineName = data.machineName;
+    this.manageSensorCount();
   }
 
 
   addRemoveSensor(sensor, data, model) {
-    let isNew = false;
-    let isRemove = false;
     if (data.sensorStatusId === SensorStatusIdEnum.stable) {
-      isRemove = true;
       if (model) {
         const index = model.findIndex(x => x.SensorId === data.sensorId);
         if (index > -1) {
           model.splice(index, 1);
+          this.toastrService.info(data.notifyMessage);
+          this.manageSensorCount();
         }
       }
     } else if (!sensor) {
       sensor = {};
-      isNew = true;
       sensor.SensorId = data.sensorId;
       sensor.Voltage = data.voltage;
       sensor.LiveValue = data.liveValue;
@@ -157,9 +159,13 @@ export class SensorService extends BaseService<any> {
       sensor.MachineName = data.machineName;
       if (model) {
         model.push(sensor);
+        this.toastrService.info(data.notifyMessage);
+        this.manageSensorCount();
       }
     }
   }
 
-  // http://198.12.229.152/api/Sensor/DeleteSensors?Ids=1&Ids=2&Ids=3
+  manageSensorCount(){
+    this.alarmCountEvent.emit(true);
+  }
 }

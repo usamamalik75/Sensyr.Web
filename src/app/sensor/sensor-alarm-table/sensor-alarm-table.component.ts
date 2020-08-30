@@ -72,7 +72,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit {
           this.toastrService.info(data.notifyMessage);
         }
       }
-      console.log(data);
+      // console.log(data);
     });
   }
 

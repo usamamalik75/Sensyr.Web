@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
 })
 export class SignalRService {
   private hubConnection: signalR.HubConnection;
-  alarmTableEvent = new EventEmitter<any>();
   alarmTableSubject = new Subject<any>();
   connection: any;
 

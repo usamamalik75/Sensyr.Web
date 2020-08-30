@@ -50,6 +50,13 @@ export class SensorAlarmDetailComponent implements OnInit {
 
     this.getAlarmsStatuses();
     this.getTotalAlarmsStatuses();
+    this.subscribeMethod();
+  }
+
+  subscribeMethod() {
+    this.sensorService.alarmCountEvent.subscribe(data => {
+      this.getTotalAlarmsStatuses();
+    });
   }
   // /api/Sensor/GetTotalAlarmsStatuses
   getTotalAlarmsStatuses() {
@@ -96,7 +103,7 @@ export class SensorAlarmDetailComponent implements OnInit {
       chart.paddingRight = 20;
       const data = [];
       for (let i = 0; i < values.length; i++) {
-          data.push({ date: values[i].Datetime, name: 'name' + i, value: values[i].LiveValue });
+        data.push({ date: values[i].Datetime, name: 'name' + i, value: values[i].LiveValue });
       }
       chart.data = data;
       // Create axes
@@ -129,14 +136,14 @@ export class SensorAlarmDetailComponent implements OnInit {
 
       bullet.events.on('inited', function (event) {
         animateBullet(event.target.circle);
-      })
+      });
 
 
       function animateBullet(bullet) {
         const animation = bullet.animate([{ property: 'scale', from: 1, to: 5 }, { property: 'opacity', from: 1, to: 0 }], 1000, am4core.ease.circleOut);
         animation.events.on('animationended', function (event) {
           animateBullet(event.target.object);
-        })
+        });
       }
 
       this.chart = chart;
