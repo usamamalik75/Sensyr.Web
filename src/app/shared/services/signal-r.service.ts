@@ -22,7 +22,7 @@ export class SignalRService {
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('http://198.12.229.152/NotificationHub/')
+      .withUrl(environment.uri + 'NotificationHub/')
       .build();
     this.hubConnection
       .start()

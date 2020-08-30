@@ -7,6 +7,7 @@ import { Options } from 'highcharts';
 import { isPlatformBrowser } from '@angular/common';
 import { SensorService } from '../shared/sensor.service';
 import { ActivatedRoute } from '@angular/router';
+import { SensorStatusIdEnum } from '@app/shared/services';
 
 @Component({
   selector: 'app-sensor-detail-analytics',
@@ -41,7 +42,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sensorId = +this.activatedRoute.snapshot.params.sensorId;
     this.getSensorDetailAnalyticsPerformance();
-    // this.getSensorDetailAnalyticsStatus();
+    this.getSensorDetailAnalyticsStatus();
     // this.getTestDetail();
 
   }
@@ -51,7 +52,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
       data => {
         // console.log(JSON.stringify(data.Data));
         this.lineGraph(data.Data);
-        this.drawWithData(data.Data);
+        // this.drawWithData(data.Data);
       },
       error => {
       });
@@ -60,8 +61,8 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   getSensorDetailAnalyticsStatus() {
     this.sensorService.getSensorDetailAnalyticsStatus(this.sensorId).subscribe(
       data => {
-        // console.log(JSON.stringify(data));
-        this.drawWithData(data);
+        console.log(JSON.stringify(data));
+        this.drawWithData(data.Data);
       },
       error => {
       });
@@ -187,22 +188,40 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
     series.stacked = true;
 
     series.columns.template.width = am4core.percent(10);
-    series.columns.template.tooltipText =
-      '[bold]{name}[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
+    // series.columns.template.tooltipText =
+    //   '[bold]{name}[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
 
-    series.heatRules.push({
-      'target': series.columns.template,
-      'property': 'fill',
-      'min': am4core.color(color),
-      'max': am4core.color(color),
-      'dataField': 'valueY'
-    });
-    series.heatRules.push({
-      'target': series.columns.template,
-      'property': 'stroke',
-      'min': am4core.color(color),
-      'max': am4core.color(color),
-      'dataField': 'valueY'
+    // series.heatRules.push({
+    //   'target': series.columns.template,
+    //   'property': 'fill',
+    //   'min': am4core.color(color),
+    //   'max': am4core.color(color),
+    //   'dataField': 'valueY'
+    // });
+    // series.heatRules.push({
+    //   'target': series.columns.template,
+    //   'property': 'stroke',
+    //   'min': am4core.color(color),
+    //   'max': am4core.color(color),
+    //   'dataField': 'valueY'
+    // });
+
+    const columnTemplate = series.columns.template;
+    // columnTemplate.tooltipText = '{categoryX}: [bold]{valueY}[/]';
+    columnTemplate.fillOpacity = .8;
+    columnTemplate.strokeOpacity = 0;
+    columnTemplate.fill = am4core.color('#5a5');
+
+
+    columnTemplate.adapter.add('fill', function (fill, target) {
+      const tooltipName = target.dataItem['dataContext']['SensorStatusName'];
+      columnTemplate.tooltipText =  '[bold]'+tooltipName+'[/]\n[font-size:14px]{dateX.formatDate("dd-MM-yyyy hh:mm")}: {valueY}';
+      if (target.dataItem && (target.dataItem['dataContext']['SensorStatusId'] === SensorStatusIdEnum.critical)) {
+        return am4core.color('#E87A7A');
+      }
+      else {
+        return am4core.color('#FFBD2F');
+      }
     });
 
     return series;
@@ -214,22 +233,42 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
       data.forEach(element => {
         element.DateTime = new Date(element.DateTime);
       });
-      this.chart.data = data;
       this.chart.mouseWheelBehavior = 'zoomXY';
-      this.dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
-      this.dateAxis.renderer.cellStartLocation = 0.2;
-      this.dateAxis.renderer.cellEndLocation = 0.8;
+      const dateAxis = this.chart.xAxes.push(new am4charts.DateAxis());
+      dateAxis.renderer.grid.template.location = 0;
+      dateAxis.baseInterval = {
+        'timeUnit': 'hour',
+        'count': 24
+      };
+
 
       this.valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis());
       this.valueAxis.renderer.inside = true;
       this.valueAxis.renderer.labels.template.disabled = true;
       this.valueAxis.min = 0;
 
-      this.createSeries('WarningMax', 'Warning', '#FFBD2F');
-      this.createSeries('CriticalMax', 'Critical', '#E87A7A');
+ 
+
+      this.createSeries('Value', 'Value', '#FFBD2F');
+      // this.createSeries('CriticalMax', 'Critical', '#E87A7A');
+      this.chart.data = data;
     });
   }
 
+  dateAxisChanged(ev,that) {
+    let start = new Date(ev.target.minZoomed);
+    let end = new Date(ev.target.maxZoomed);
+    console.log("New range: " + start + " -- " + end);
+    // that.drawWithData('');
+    // if (ev.target['axisFullLength'] >= 5500 && fThis.statusAxisLength < 5500) {
+    //   fThis.statusAxisLength = 5500;
+    //   console.log(ev.target['axisFullLength']);
+    // }
+    // if (ev.target['axisFullLength'] <= 5500 && fThis.statusAxisLength === 0) {
+    //   fThis.statusAxisLength = 0;
+    //   console.log(ev.target['axisFullLength']);
+    // }
+  }
 
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {

@@ -20,12 +20,12 @@ export class AuthService extends BaseService<any> {
   ) {
     super(
       httpClient,
-      environment.api_aepistle_uri);
+      environment.api_sensor_uri);
   }
 
   postLogin(body: any): Observable<any> {
     this.http = new HttpClient(this.httpBackend);
-    return this.http.post(environment.api_aepistle_uri + '/' + this.apiService.authApi + this.authEndPoints.postLoginEndPoint, body);
+    return this.http.post(environment.api_sensor_uri + '/' + this.apiService.authApi + this.authEndPoints.postLoginEndPoint, body);
   }
 
 }
