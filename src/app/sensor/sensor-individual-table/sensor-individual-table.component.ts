@@ -137,7 +137,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
       if (data && data != null) {
         this.individualTableModel[items].forEach(item => {
           const sensor = item.IndividualSensorResponses.find(x => x.SensorId === data.sensorId);
-          if (sensor.SensorStatusId !== data.sensorStatusId) {
+          if (sensor) {
             this.sensorService.updateSensor(sensor, data);
           }
         });

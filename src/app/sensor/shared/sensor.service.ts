@@ -138,7 +138,9 @@ export class SensorService extends BaseService<any> {
         const index = model.findIndex(x => x.SensorId === data.sensorId);
         if (index > -1) {
           model.splice(index, 1);
-          this.toastrService.info(data.notifyMessage);
+          if (data.shouldNotifyMessage) {
+            this.toastrService.info(data.notifyMessage);
+          }
           this.manageSensorCount();
         }
       }
@@ -159,7 +161,9 @@ export class SensorService extends BaseService<any> {
       sensor.MachineName = data.machineName;
       if (model) {
         model.push(sensor);
-        this.toastrService.info(data.notifyMessage);
+        if (data.shouldNotifyMessage) {
+          this.toastrService.info(data.notifyMessage);
+        }
         this.manageSensorCount();
       }
     }

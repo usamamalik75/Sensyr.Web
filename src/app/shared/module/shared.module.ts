@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from '@app/shared/_modal/modal.module';
-import { HighchartsChartModule } from 'highcharts-angular';
 import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
@@ -14,7 +13,6 @@ import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confi
     ReactiveFormsModule,
     NgxPaginationModule,
     NgbModule,
-    HighchartsChartModule,
     ConfirmDialogModule,
   ],
   exports: [
@@ -22,7 +20,6 @@ import { ConfirmDialogModule } from '@app/shared/components/confirm-dialog/confi
     NgxPaginationModule,
     NgbModule,
     ModalModule,
-    HighchartsChartModule,
     ConfirmDialogModule,
   ]
 })

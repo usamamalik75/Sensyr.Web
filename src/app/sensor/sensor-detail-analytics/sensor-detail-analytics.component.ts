@@ -2,8 +2,6 @@ import { Component, OnInit, NgZone, Input, AfterViewInit, OnDestroy, Inject, PLA
 import * as am4core from '@amcharts/amcharts4/core';
 import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-import * as Highcharts from 'highcharts/highmaps';
-import { Options } from 'highcharts';
 import { isPlatformBrowser } from '@angular/common';
 import { SensorService } from '../shared/sensor.service';
 import { ActivatedRoute } from '@angular/router';
