@@ -139,7 +139,7 @@ export class SensorService extends BaseService<any> {
         if (index > -1) {
           model.splice(index, 1);
           if (data.shouldNotifyMessage) {
-            this.toastrService.info(data.notifyMessage);
+            this.toastrMessage(data);
           }
           this.manageSensorCount();
         }
@@ -162,10 +162,24 @@ export class SensorService extends BaseService<any> {
       if (model) {
         model.push(sensor);
         if (data.shouldNotifyMessage) {
-          this.toastrService.info(data.notifyMessage);
+          this.toastrMessage(data);
         }
         this.manageSensorCount();
       }
+    }
+  }
+
+  toastrMessage(data) {
+    const message = data.notifyMessage;
+    const sensorStatusId = data.sensorStatusId;
+    if (sensorStatusId === SensorStatusIdEnum.critical) {
+      this.toastrService.error(message);
+    } else if (sensorStatusId === SensorStatusIdEnum.warning) {
+      this.toastrService.warning(message);
+    } else if (sensorStatusId === SensorStatusIdEnum.inProgress) {
+      this.toastrService.info(message);
+    } else if (sensorStatusId === SensorStatusIdEnum.stable) {
+      this.toastrService.success(message);
     }
   }
 

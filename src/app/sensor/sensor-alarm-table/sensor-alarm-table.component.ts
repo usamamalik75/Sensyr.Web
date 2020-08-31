@@ -53,7 +53,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
       //   processing: true,
       // };
       this.alarmModel = this.newAlarmModel;
-        this.dtTrigger.next();
+      this.dtTrigger.next();
       //       setTimeout(() => {
       //       this.getAlaramDetails();
       //   //     this.alarmModel = model;
@@ -95,13 +95,12 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
           const model = JSON.parse(JSON.stringify(this.alarmModel));
           this.sensorService.addRemoveSensor(sensor, data, model);
           this.newAlarmModel = model;
-            document.getElementById('refreshbtn').click();
-            setTimeout(() => {
-          },10);
+          document.getElementById('refreshbtn').click();
+
         } else {
           this.sensorService.updateSensor(sensor, data);
           if (data.shouldNotifyMessage) {
-            this.toastrService.info(data.notifyMessage);
+            this.sensorService.toastrMessage(data);
           }
         }
       }
@@ -114,7 +113,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
     this.dtTrigger.unsubscribe();
   }
 
-  refreshTable(){
+  refreshTable() {
     this.rerender();
   }
 }
