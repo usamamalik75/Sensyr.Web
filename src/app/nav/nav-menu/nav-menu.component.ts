@@ -8,7 +8,8 @@ import { interval } from 'rxjs';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-  dateTime: string;
+  date: string;
+  time: string;
   welcomeStatus: string;
 
   constructor(
@@ -19,9 +20,10 @@ export class NavMenuComponent implements OnInit {
     const source = interval(1000);
     const subscribe = source.subscribe(
       val => {
-        this.dateTime = this.sharedService.getDateTime();
+        this.date = this.sharedService.getDate();
+        this.time = this.sharedService.getTime();
+        this.welcomeStatus = this.sharedService.welcomeStatus();
       });
-    this.welcomeStatus = this.sharedService.welcomeStatus();
   }
 
   save() {

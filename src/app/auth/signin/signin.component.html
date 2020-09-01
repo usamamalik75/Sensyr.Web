@@ -11,6 +11,9 @@
     <input type="password" placeholder="Enter Password" name="psw" formControlName="password" required>
         
     <button type="submit" (click)="postLogin()" [disabled]="signinForm.invalid" >Login</button>
+    <label class="d-none">
+      Not Registered? <a class="cp" (click)="register()">Create an account</a>
+    </label>
     <label class=" d-none">
       <input type="checkbox" checked="checked"  name="remember"> Remember me
     </label>

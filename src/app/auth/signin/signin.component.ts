@@ -55,5 +55,10 @@ export class SigninComponent implements OnInit {
   }
 
 
+  register(){
+    this.router.navigate(['auth', 'register']);
+  }
+
+
 
 }

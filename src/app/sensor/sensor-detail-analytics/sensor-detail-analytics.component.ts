@@ -59,7 +59,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   getSensorDetailAnalyticsStatus() {
     this.sensorService.getSensorDetailAnalyticsStatus(this.sensorId).subscribe(
       data => {
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         this.drawWithData(data.Data);
       },
       error => {
@@ -263,7 +263,7 @@ export class SensorDetailAnalyticsComponent implements OnInit, OnDestroy {
   dateAxisChanged(ev,that) {
     let start = new Date(ev.target.minZoomed);
     let end = new Date(ev.target.maxZoomed);
-    console.log("New range: " + start + " -- " + end);
+    // console.log("New range: " + start + " -- " + end);
     // that.drawWithData('');
     // if (ev.target['axisFullLength'] >= 5500 && fThis.statusAxisLength < 5500) {
     //   fThis.statusAxisLength = 5500;

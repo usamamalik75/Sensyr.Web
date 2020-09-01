@@ -62,7 +62,7 @@ export class SensorAlarmDetailComponent implements OnInit {
   getTotalAlarmsStatuses() {
     this.sensorService.getTotalAlarmsStatuses().subscribe(
       data => {
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         this.critical = data.Data.Critical;
         this.warning = data.Data.Warning;
         this.inPrgress = data.Data.InProgress;
@@ -75,6 +75,7 @@ export class SensorAlarmDetailComponent implements OnInit {
   getAlarmsStatuses() {
     this.sensorService.getAlarmsStatuses().subscribe(
       data => {
+        console.log(data.Data);
         const alarmsStatuses = data.Data;
         const warning = data.Data.Items.find(x => x.AlarmStatusName === SensorStatusEnum.warning);
         const inPrgress = data.Data.Items.find(x => x.AlarmStatusName === SensorStatusEnum.inProgress);
