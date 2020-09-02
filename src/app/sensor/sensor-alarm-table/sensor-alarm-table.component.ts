@@ -5,6 +5,7 @@ import { SensorStatusEnum, SignalRService, SensorStatusIdEnum } from '@app/share
 import { Subscription, Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { DataTableDirective } from 'angular-datatables';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sensor-alarm-table',
@@ -24,7 +25,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
     private sensorService: SensorService,
     private signalRService: SignalRService,
     private toastrService: ToastrService,
-    private cd: ChangeDetectorRef
+    private router: Router
   ) { }
 
   dtOptions: DataTables.Settings = {};
@@ -43,26 +44,16 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
 
   rerender(model?): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
       dtInstance.destroy();
-      // Call the dtTrigger to rerender again
-      // this.dtOptions = {
-      //   pagingType: 'full_numbers',
-      //   pageLength: 5,
-      //   lengthMenu: [5, 10, 25],
-      //   processing: true,
-      // };
       this.alarmModel = this.newAlarmModel;
       this.dtTrigger.next();
-      //       setTimeout(() => {
-      //       this.getAlaramDetails();
-      //   //     this.alarmModel = model;
-      //   // this.dtTrigger.next();
-      // }, 100);
-
     });
   }
 
+
+  sensorDetail(data) {
+    this.router.navigate(['app', 'sensor', 'detail', data.SensorId, data.SensorTypeName, data.SensorName]);
+  }
 
   ngAfterViewInit() {
     this.subscribeMethod();
