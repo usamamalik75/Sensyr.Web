@@ -10,7 +10,7 @@
             </div>
         </section>
     </div>
-    <div class="tab-row-sections" *ngFor="let item of individualTableModel.Items; let i = index">
+    <div class="tab-row-sections" *ngFor="let item of individualTableModel; let i = index">
         <section>
             <h2>{{item.MachineName}} ({{item.IndividualSensorResponses.length}})</h2>
 
@@ -25,7 +25,7 @@
 
             <div class="col-md-4 col-sm-12 pd-l-0 mt-6"
                 *ngFor="let individualSensor of item.IndividualSensorResponses | paginate: config">
-                <div class="tab-sensor-card " >
+                <div class="tab-sensor-card">
                     <section>
                         <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" (click)="sensorDetail(individualSensor)" class="cp">
                         <aside>

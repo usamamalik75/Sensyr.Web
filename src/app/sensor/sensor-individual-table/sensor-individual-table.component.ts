@@ -59,20 +59,40 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
   getIndividualSensors(search?) {
     this.sensorService.getIndividualSensors(this.config, search).subscribe(
       data => {
-        this.individualTableModel = data.Data;
+        this.manupulateDate(data.Data.Items);
         this.config.totalItems = data.Data.TotalCount;
-        // this.config.itemsPerPage = data.Data.ItemsPerPage;
         this.config.currentPage = data.Data.CurrentPage;
-        // console.log(JSON.stringify(data));
       },
       error => {
       });
   }
 
+  manupulateDate(data: any) {
+    const Items = [];
+    let mainObject;
+    data.forEach(element => {
+      const index = Items.findIndex(x => x.MachineName === element.MachineName);
+      if (index > -1) {
+        Items[index].IndividualSensorResponses.push(element);
+      }
+      else {
+        mainObject = {};
+        mainObject.IndividualSensorResponses = [];
+        mainObject.MachineId = element.MachineId;
+        mainObject.MachineName = element.MachineName;
+        mainObject.IndividualSensorResponses.push(element);
+        Items.push(mainObject);
+      }
+    });
+
+    this.individualTableModel = Items;
+  }
+
   private getTestDetail() {
     this.sensorService.getTestDetail().subscribe(
       data => {
-        this.individualTableModel = data.Data;
+        this.manupulateDate(data.Data.Items[0].IndividualSensorResponses);
+        // this.individualTableModel = data.Data;
         this.config.totalItems = data.Data.TotalCount;
         // this.config.itemsPerPage = data.Data.ItemsPerPage;
         this.config.currentPage = data.Data.CurrentPage;
