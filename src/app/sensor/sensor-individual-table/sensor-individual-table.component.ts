@@ -158,15 +158,14 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
         idsArray += '&Ids=' + element;
       }
     });
-    console.log(idsArray);
-    // this.sensorService.deleteSensors(idsArray).subscribe(
-    //   data => {
-    //     this.toastrService.info('Sensor(s) has been deleted successfully!');
-    //     this.getIndividualSensors();
-    //     this.sensorsArray = [];
-    //   },
-    //   error => {
-    //   });
+    this.sensorService.deleteSensors(idsArray).subscribe(
+      data => {
+        this.toastrService.info('Sensor(s) has been deleted successfully!');
+        this.getIndividualSensors();
+        this.sensorsArray = [];
+      },
+      error => {
+      });
   }
 
 
@@ -181,7 +180,6 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
           }
         });
       }
-      // console.log(data);
     });
   }
 
@@ -194,9 +192,6 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
     models.forEach(items => {
       items.IndividualSensorResponses.forEach((element, i) => {
         this.checkSensors('ev', element, items, i);
-        // let sensorCheckbox;
-        // sensorCheckbox = document.getElementById(items.MachineName + i);
-        // sensorCheckbox.checked = true;
       });
     });
 
