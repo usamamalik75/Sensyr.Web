@@ -45,7 +45,6 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
   rerender(model?): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       dtInstance.destroy();
-      this.alarmModel = this.newAlarmModel;
       this.dtTrigger.next();
     });
   }
@@ -71,6 +70,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
           }
         });
         this.alarmModel = data.Data;
+        this.newAlarmModel = data.Data;
         this.dtTrigger.next();
       },
       error => {
@@ -86,6 +86,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
           const model = JSON.parse(JSON.stringify(this.alarmModel));
           this.sensorService.addRemoveSensor(sensor, data, model);
           this.newAlarmModel = model;
+          this.alarmModel = this.newAlarmModel;
           document.getElementById('refreshbtn').click();
 
         } else {
@@ -97,7 +98,21 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
       }
       // console.log(data);
     });
+
+
+    this.sensorService.alarmTableSelectEvent.subscribe(
+      data => {
+        if (data === '' || data == null) {
+          this.alarmModel = this.newAlarmModel;
+          console.log(this.alarmModel);
+        } else {
+          this.alarmModel = this.newAlarmModel.filter(x => x.SensorStatusId === data);
+          console.log(this.alarmModel);
+        }
+        document.getElementById('refreshbtn').click();
+      });
   }
+
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event

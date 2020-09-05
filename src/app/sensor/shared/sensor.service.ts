@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SensorService extends BaseService<any> {
 
+  alarmTableSelectEvent = new EventEmitter<any>();
   alarmCountEvent = new EventEmitter<any>();
   private urlTest = 'assets/json/test.json';
   public SelectedUser$: BehaviorSubject<any> = new BehaviorSubject({} as any);

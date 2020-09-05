@@ -4,9 +4,13 @@
         <section>
     
             <div class="tab-row-btn-group">
-                <a>Add to Group</a>
-                <a class="row-btn--warning" (click)="deleteSensors()">Delete</a>
-                <a class="row-btn--cancel">Cancel</a>
+                <a *ngIf="!isSelect" class="row-btn--cancel cp" (click)="select()">Select</a>
+                <div *ngIf="isSelect">
+                <a class="row-btn--cancel cp" (click)="selectAll()">Select All</a>
+                <a class="cp">Add to Group</a>
+                <a class="row-btn--warning cp" (click)="deleteSensors()" >Delete</a>
+                <a class="row-btn--cancel cp" (click)="select()">Cancel</a>
+                </div>
             </div>
         </section>
     </div>
@@ -24,17 +28,17 @@
         <div class="col-lg-12 pd-0">
 
             <div class="col-md-4 col-sm-12 pd-l-0 mt-6"
-                *ngFor="let individualSensor of item.IndividualSensorResponses | paginate: config">
-                <div class="tab-sensor-card">
+                *ngFor="let individualSensor of item.IndividualSensorResponses | paginate: config; let i = index">
+                <div class="tab-sensor-card cp" (click)="isSelect? checkSensors($event, individualSensor,item, i) : sensorDetail(individualSensor)">
                     <section>
-                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" (click)="sensorDetail(individualSensor)" class="cp">
+                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" >
                         <aside>
-                            <div class="custom-checkbox" >
-                                <input class="check" type="checkbox" (click)="checkSensors($event, individualSensor)">
+                            <div class="custom-checkbox" *ngIf="isSelect" (click)="checkSensors($event, individualSensor,item, i, true)">
+                                <input class="check" id="{{item.MachineName}}{{i}}" type="checkbox" >
                             </div>
-                            <h3 class="cp" (click)="sensorDetail(individualSensor)">Sensor ID: {{individualSensor.SensorId}}</h3>
-                            <h4 class="cp" (click)="sensorDetail(individualSensor)">{{individualSensor.SensorName}}</h4>
-                            <p (click)="sensorDetail(individualSensor)" class="temp-stats temp-warning--blink cp">{{individualSensor.SensorTypeName}}
+                            <h3>Sensor ID: {{individualSensor.SensorId}}</h3>
+                            <h4>{{individualSensor.SensorName}}</h4>
+                            <p  class="temp-stats temp-warning--blink cp">{{individualSensor.SensorTypeName}}
                                 <span *ngIf="individualSensor.SensorStatusId === sensorStatusIdEnum.critical"
                                     class="tooltip-top" data-tooltip="Critical!"><img
                                         src="assets/images/alert-blink-icon.png"></span>
@@ -44,7 +48,7 @@
                             </p>
                         </aside>
                     </section>
-                    <div (click)="sensorDetail(individualSensor)" class="d-flex d-flex-temp-stats cp">
+                    <div  class="d-flex d-flex-temp-stats cp">
                         <div>
                             <h3>{{individualSensor.LiveValue}}˚C</h3>
                             <p>Live Value</p>

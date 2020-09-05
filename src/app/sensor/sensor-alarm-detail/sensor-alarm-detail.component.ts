@@ -5,7 +5,7 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { isPlatformBrowser } from '@angular/common';
 import { SensorService } from '../shared/sensor.service';
 import { ActivatedRoute } from '@angular/router';
-import { SensorStatusEnum } from '@app/shared/services';
+import { SensorStatusEnum, SensorStatusIdEnum } from '@app/shared/services';
 
 
 @Component({
@@ -22,12 +22,14 @@ export class SensorAlarmDetailComponent implements OnInit {
   warningCount: string;
   inPrgressCount: string;
   criticalCount: string;
+  sensorStatusIdEnum: typeof SensorStatusIdEnum;
 
   chart: am4charts.XYChart;
   categoryAxis: any;
   valueAxis: any;
   currentBar: any;
   sensorId: number;
+  selectedSensorStatusId: number;
 
   constructor(
     private zone: NgZone,
@@ -47,6 +49,7 @@ export class SensorAlarmDetailComponent implements OnInit {
 
   ngOnInit(): void {
     am4core.useTheme(am4themes_animated);
+    this.sensorStatusIdEnum = SensorStatusIdEnum;
 
     this.getAlarmsStatuses();
     this.getTotalAlarmsStatuses();
@@ -173,6 +176,17 @@ export class SensorAlarmDetailComponent implements OnInit {
     } else {
       this.criticalCount = '' + criticalLength;
     }
+  }
+
+
+  alarmTableSelect(val){
+      if (this.selectedSensorStatusId === val) {
+        this.selectedSensorStatusId = null;
+      } else {
+        this.selectedSensorStatusId = +val;
+      }
+      this.sensorService.alarmTableSelectEvent.emit(this.selectedSensorStatusId);
+
   }
 
 }

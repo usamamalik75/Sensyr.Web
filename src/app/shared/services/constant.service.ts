@@ -4,13 +4,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantService {
-
   defaultPage: number;
   defaultItemPerPage: number;
   constructor() {
     this.defaultPage = 1;
     this.defaultItemPerPage = 10;
   }
+
+  detachObject(model) {
+    return JSON.parse(JSON.stringify(model));
+  }
+
 }
 
 

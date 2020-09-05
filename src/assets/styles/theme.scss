@@ -25822,6 +25822,9 @@ body.basic-timeline .panel-clone {
   border-radius: 8px;
   border-left:2px solid #E87A7A;
 }
+.sensor-selected .fourBoxColumn{
+  border:2px solid #E87A7A;
+}
 .WarningSensorDetail{
   border-radius: 8px;
   padding: 19px 20px 19px 70px;
@@ -25945,6 +25948,10 @@ body.basic-timeline .panel-clone {
   border-left:2px solid #FFBD2F;
   background-image: url("../images/icon-warnings-breached.svg");
 }
+.sensor-selected .fourBoxColumn.yellowBox{
+  border:2px solid #FFBD2F;
+}
+
 .fourBoxColumn.yellowBox p, .fourBoxColumn.yellowBox h2{
   color: #FFBD2F;
 }
@@ -25953,6 +25960,10 @@ body.basic-timeline .panel-clone {
   border-left:2px solid #5CB592;
   background-image: url("../images/icon-in-progress.svg");
 }
+.sensor-selected .fourBoxColumn.greenBox{
+  border:2px solid #5CB592;
+}
+
 .fourBoxColumn.greenBox p, .fourBoxColumn.greenBox h2{
   color: #5CB592;
 }

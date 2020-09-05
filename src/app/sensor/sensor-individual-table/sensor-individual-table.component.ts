@@ -14,7 +14,7 @@ import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/conf
 export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterViewInit {
   individualTableModel: IndividualTableModel[] = [];
   sensorStatusIdEnum: typeof SensorStatusIdEnum;
-
+  isSelect: boolean;
   @Input() private searchClick: EventEmitter<any>;
   config = {
     itemsPerPage: this.constantSetvice.defaultItemPerPage,
@@ -24,6 +24,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
   };
   searchText: string;
   sensorsArray: any = [];
+  isSensorChecked: boolean;
 
   constructor(
     private sensorService: SensorService,
@@ -62,6 +63,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
         this.manupulateDate(data.Data.Items);
         this.config.totalItems = data.Data.TotalCount;
         this.config.currentPage = data.Data.CurrentPage;
+        this.sensorsArray = [];
       },
       error => {
       });
@@ -112,26 +114,42 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
   }
 
 
-  checkSensors(ev, data) {
-    if (ev.target.checked) {
-      this.sensorsArray.push(data.SensorId);
-    } else {
-      const index = this.sensorsArray.indexOf(data.SensorId);
-      if (index > -1) {
-        this.sensorsArray.splice(index, 1);
+  checkSensors(ev, data, item, i, isNotCheck?) {
+    if (!this.isSensorChecked) {
+      this.isSensorChecked = isNotCheck;
+      let sensorCheckbox;
+      sensorCheckbox = document.getElementById(item.MachineName + i);
+      if (!isNotCheck) {
+        if (sensorCheckbox.checked) {
+          sensorCheckbox.checked = false;
+        } else {
+          sensorCheckbox.checked = true;
+        }
       }
+      if (sensorCheckbox.checked) {
+        this.sensorsArray.push(data.SensorId);
+      } else {
+        const index = this.sensorsArray.indexOf(data.SensorId);
+        if (index > -1) {
+          this.sensorsArray.splice(index, 1);
+        }
+      }
+    }
+    else {
+      this.isSensorChecked = false;
     }
   }
 
   deleteSensors() {
-    this.confirmDialogService.confirmThis('Are you sure to delete?', () => {
-      this.delete();
-    }, () => {
-    });
+    if (this.sensorsArray && this.sensorsArray.length > 0) {
+      this.confirmDialogService.confirmThis('Are you sure to delete?', () => {
+        this.delete();
+      }, () => {
+      });
+    }
   }
 
   delete() {
-
     let idsArray: string;
     this.sensorsArray.forEach((element, index) => {
       if (index === 0) {
@@ -140,14 +158,15 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
         idsArray += '&Ids=' + element;
       }
     });
-    this.sensorService.deleteSensors(idsArray).subscribe(
-      data => {
-        this.toastrService.info('Sensor(s) has been deleted successfully!');
-        this.getIndividualSensors();
-        this.sensorsArray = [];
-      },
-      error => {
-      });
+    console.log(idsArray);
+    // this.sensorService.deleteSensors(idsArray).subscribe(
+    //   data => {
+    //     this.toastrService.info('Sensor(s) has been deleted successfully!');
+    //     this.getIndividualSensors();
+    //     this.sensorsArray = [];
+    //   },
+    //   error => {
+    //   });
   }
 
 
@@ -166,4 +185,20 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
     });
   }
 
+  select(){
+    this.isSelect = !(this.isSelect);
+  }
+
+  selectAll() {
+    const models = this.constantSetvice.detachObject(this.individualTableModel);
+    models.forEach(items => {
+      items.IndividualSensorResponses.forEach((element, i) => {
+        this.checkSensors('ev', element, items, i);
+        // let sensorCheckbox;
+        // sensorCheckbox = document.getElementById(items.MachineName + i);
+        // sensorCheckbox.checked = true;
+      });
+    });
+
+  }
 }

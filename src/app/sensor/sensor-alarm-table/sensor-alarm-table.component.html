@@ -28,9 +28,9 @@
                         </td>
                         <td>{{alarm.TimeElapsed}}</td>
                         <td>{{alarm.SensorTypeName}}</td>
-                        <td> {{alarm.LiveValue}}</td>
-                        <td>{{alarm.DayMin}}</td>
-                        <td>{{alarm.DayMax}}</td>
+                        <td> {{alarm.LiveValue}}˚C</td>
+                        <td>{{alarm.DayMin}}˚C</td>
+                        <td>{{alarm.DayMax}}˚C</td>
                         <td>
                             <span
                                 [class]="alarm.SensorStatusName === sensorStatusEnum.critical? 'btn-critical-grid' : alarm.SensorStatusName === sensorStatusEnum.warning? 'btn-warning-grid' : 'btn-inprogress-grid'">{{alarm.SensorStatusName}}</span>
