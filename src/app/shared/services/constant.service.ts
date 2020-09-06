@@ -31,3 +31,12 @@ export enum SensorStatusIdEnum {
   inProgress = 3,
   stable = 4,
 }
+
+
+export enum SensorDataTypeNameEnum {
+  digital = 'Digital',
+  analog = 'Analog'
+}
+
+
+

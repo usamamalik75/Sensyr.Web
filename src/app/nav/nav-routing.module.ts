@@ -15,7 +15,7 @@ const myChildren: any = [
     path: 'machine',
     loadChildren: () => import('@app/machine/machine.module').then(m => m.MachineModule),
     data: {
-      breadcrumb: 'Machines'
+      breadcrumb: 'Assets'
     },
   }
 ];

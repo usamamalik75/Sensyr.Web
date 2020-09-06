@@ -20,9 +20,9 @@
     </div>
 </div>
 
-<jw-modal id="custom-modal-1">
+<jw-modal id="custom-modal-1" (click)="closeModal('custom-modal-1');">
     <span *ngIf="groupId">
-        <a (click)="closeModal('custom-modal-1');" title="Close" class="closeDialog">
+        <a (click)="closeModal('custom-modal-1');" title="Close" class="closeDialog cp">
             <img src="assets/images/icon-close.svg">
         </a>
         <app-sensor-group-form [data]="groupId" (closeClick)="closeModal('custom-modal-1');"></app-sensor-group-form>

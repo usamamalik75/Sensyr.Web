@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy, EventEmitter, AfterViewInit } from '@angular/core';
 import { SensorService } from '../shared/sensor.service';
 import { IndividualTableModel } from '../shared/alarm.model';
-import { SensorStatusIdEnum, ConstantService, SignalRService } from '@app/shared/services';
+import { SensorStatusIdEnum, ConstantService, SignalRService, SensorDataTypeNameEnum } from '@app/shared/services';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/confirm-dialog.service';
@@ -14,6 +14,7 @@ import { ConfirmDialogService } from '@app/shared/components/confirm-dialog/conf
 export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterViewInit {
   individualTableModel: IndividualTableModel[] = [];
   sensorStatusIdEnum: typeof SensorStatusIdEnum;
+  sensorDataTypeNameEnum: typeof SensorDataTypeNameEnum;
   isSelect: boolean;
   @Input() private searchClick: EventEmitter<any>;
   config = {
@@ -37,6 +38,7 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
 
   ngOnInit(): void {
     this.sensorStatusIdEnum = SensorStatusIdEnum;
+    this.sensorDataTypeNameEnum = SensorDataTypeNameEnum;
     this.getIndividualSensors();
     // this.getTestDetail();
     this.searchEvent();

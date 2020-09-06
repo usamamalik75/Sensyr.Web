@@ -49,15 +49,15 @@
                         </aside>
                     </section>
                     <div  class="d-flex d-flex-temp-stats cp">
-                        <div>
+                        <div [class.live-align-center]="individualSensor.DataTypeName == sensorDataTypeNameEnum.digital">
                             <h3>{{individualSensor.LiveValue}}˚C</h3>
                             <p>Live Value</p>
                         </div>
-                        <div>
+                        <div *ngIf="individualSensor.DataTypeName != sensorDataTypeNameEnum.digital">
                             <h3>{{individualSensor.DayMin}}˚C</h3>
                             <p>Day Min</p>
                         </div>
-                        <div>
+                        <div *ngIf="individualSensor.DataTypeName != sensorDataTypeNameEnum.digital">
                             <h3>{{individualSensor.DayMax}}˚C</h3>
                             <p>Day Max</p>
                         </div>
