@@ -21,6 +21,10 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
   sensorStatusEnum: typeof SensorStatusEnum;
   isAlarmModel: boolean;
   newAlarmModel: any;
+  isShowTable: boolean = true;
+  totalCount: number;
+  p: any;
+  term: string;
   constructor(
     private sensorService: SensorService,
     private signalRService: SignalRService,
@@ -30,17 +34,19 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  isDtInitialized: boolean = false;
   ngOnInit(): void {
     this.sensorStatusEnum = SensorStatusEnum;
     this.getAlaramDetails();
-
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       lengthMenu: [5, 10, 25],
-      // processing: true,
     };
+
+
   }
+
 
   rerender(model?): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
@@ -55,6 +61,7 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   ngAfterViewInit() {
+
     this.subscribeMethod();
   }
 
@@ -71,7 +78,16 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
         });
         this.alarmModel = data.Data;
         this.newAlarmModel = data.Data;
-        this.dtTrigger.next();
+        this.totalCount = this.alarmModel.length;
+        // if (this.isDtInitialized) {
+        //   this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        //     dtInstance.destroy();
+        //     this.dtTrigger.next();
+        //   });
+        // } else {
+        //   this.isDtInitialized = true;
+        //   this.dtTrigger.next();
+        // }
       },
       error => {
       });
@@ -87,7 +103,11 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
           this.sensorService.addRemoveSensor(sensor, data, model);
           this.newAlarmModel = model;
           this.alarmModel = this.newAlarmModel;
-          document.getElementById('refreshbtn').click();
+          this.totalCount = this.alarmModel.length;
+
+          // setTimeout(() => {
+          //   document.getElementById('refreshbtn').click();
+          // }, 100);
 
         } else {
           this.sensorService.updateSensor(sensor, data);
@@ -107,6 +127,8 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
           console.log(this.alarmModel);
         } else {
           this.alarmModel = this.newAlarmModel.filter(x => x.SensorStatusId === data);
+          this.totalCount = this.alarmModel.length;
+          this.p = 1;
           console.log(this.alarmModel);
         }
         document.getElementById('refreshbtn').click();
@@ -116,10 +138,32 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
+    // this.isShowTable = false;
+    // this.dtTrigger.unsubscribe();
+    // if (this.dtElement.dtInstance) {
+    //   this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+    //     dtInstance.destroy();
+    //   });
+    // }
   }
 
   refreshTable() {
     this.rerender();
+  }
+
+  filter() {
+    const values = this.newAlarmModel;
+    let filter = this.term;
+    const keyArray = ['SensorId', 'SensorName', 'MachineName', 'TimeElapsed', 'SensorTypeName', 'LiveValue', 'DayMin', 'DayMax'];
+    if (!values || !values.length) { return []; }
+    if (!filter) { return values; }
+
+    filter = filter.toUpperCase();
+
+    if (filter && Array.isArray(values)) {
+      const keys = keyArray;
+      this.alarmModel =  values.filter(v => v && keys.some(k => String(v[k]).toUpperCase().indexOf(filter) >= 0));
+      this.totalCount = this.alarmModel.length;
+    }
   }
 }

@@ -14,6 +14,7 @@ import { SensorDetailFormComponent } from './sensor-detail-form/sensor-detail-fo
 import { SensorDetailAnalyticsComponent } from './sensor-detail-analytics/sensor-detail-analytics.component';
 import { DataTablesModule } from 'angular-datatables';
 import { SensorAlarmDetailComponent } from './sensor-alarm-detail/sensor-alarm-detail.component';
+import { SensorDetailAnalyticsTableComponent } from './sensor-detail-analytics-table/sensor-detail-analytics-table.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SensorAlarmDetailComponent } from './sensor-alarm-detail/sensor-alarm-d
     SensorGroupFormComponent,
     SensorDetailFormComponent,
     SensorDetailAnalyticsComponent,
-    SensorAlarmDetailComponent],
+    SensorAlarmDetailComponent,
+    SensorDetailAnalyticsTableComponent],
   imports: [
     CommonModule,
     SensorRoutingModule,

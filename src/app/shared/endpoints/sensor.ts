@@ -10,6 +10,7 @@ export class SensorEndPoints {
     public readonly deleteSensorsEndPoint = 'DeleteSensors';
     public readonly getSensorDetailAnalyticsPerformanceEndPoint = 'GetSensorDetailAnalyticsPerformance';
     public readonly getSensorDetailAnalyticsStatusEndPoint = 'GetSensorDetailAnalyticsStatus';
+    public readonly getSensorDetailLastTransactionsEndPoint = 'GetSensorDetailLastTransactions';
 
 }
 

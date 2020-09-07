@@ -175,8 +175,8 @@ export class SensorIndividualTableComponent implements OnInit, OnDestroy, AfterV
     const items = 'Items';
     this.signalRService.alarmTableSubject.subscribe(data => {
       if (data && data != null) {
-        this.individualTableModel[items].forEach(item => {
-          const sensor = item.IndividualSensorResponses.find(x => x.SensorId === data.sensorId);
+        this.individualTableModel.forEach(item => {
+          const sensor = item['IndividualSensorResponses'].find(x => x.SensorId === data.sensorId);
           if (sensor) {
             this.sensorService.updateSensor(sensor, data);
           }

@@ -20,6 +20,12 @@ td, th {
     margin-top: 100px;
   }
   
+ .ngx-pagination a:hover{
+    background: #585e73 !important;
+    color: white !important;
+    border-radius: 0% !important;
+  }
+
   /* Safari */
   @-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }

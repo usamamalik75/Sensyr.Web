@@ -66,6 +66,12 @@ export class SensorService extends BaseService<any> {
       .pipe(map((data: any) => data));
   }
 
+  getSensorDetailLastTransactions(id) {
+    return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailLastTransactionsEndPoint + '?id=' + id)
+    .pipe(map((data: any) => data));
+  }
+
+
   getSensorDetailAnalyticsStatus(id) {
     return this.get(this.apiService.sensorApi + this.sensorEndPoints.getSensorDetailAnalyticsStatusEndPoint + '?Id=' + id)
       .pipe(map((data: any) => data));

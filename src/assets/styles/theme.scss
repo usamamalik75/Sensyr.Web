@@ -3752,6 +3752,26 @@ td.legendColorBox {
   height: 42px;
   margin-right: 10px;
 }
+.search-input {
+  background: #FFFFFF;
+  border: 1px solid #E8EBF6;
+  border-radius: 8px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 42px;
+  color: #99A0B5;
+  background-image: url("../images/icon-search.svg");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  min-width: 288px;
+  padding-left: 40px;
+  height: 42px;
+  margin-right: 10px;
+  float: right;
+}
+
+
+
 .modal-graph-section{
   border-top:1px solid #E8EBF6;
 }
@@ -4144,9 +4164,13 @@ td.legendColorBox {
 
 .grid-pagination ul li.current, 
 .ngx-pagination a:hover, .ngx-pagination button:hover{
-  background: #3241D3 !important;
+  background: #3241D3 ;
   border-radius: 50%;
-  color:white !important;
+  color:white ;
+}
+
+.table-pagination{
+  text-align: center;
 }
 
 .ngx-pagination a {

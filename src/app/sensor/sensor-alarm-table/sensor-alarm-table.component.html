@@ -1,7 +1,11 @@
 <div class="panel panel-visible panel-custom-table">
     <div class="panel-body pn" style="min-height: 500px;">
+        
         <div class="table-responsive table-height">
-            <table class="table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <div class="form-group">
+                <input type="text" class="search-input" placeholder="Search Here" [(ngModel)]="term" (keyup)="filter()">
+            </div>
+            <table class="table" >
                 <thead>
                     <tr>
                         <th>Sensor and Assets</th>
@@ -15,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="cp" *ngFor="let alarm of alarmModel" (click)="sensorDetail(alarm)">
+                    <tr class="cp" *ngFor="let alarm of alarmModel | paginate: {itemsPerPage: 5, currentPage: p, totalItems: totalCount}" (click)="sensorDetail(alarm)">
                         <td>
                             <div class="sensor-pic">
                                 <img src="assets/images/sensor-machine/mark-7.jpg">
@@ -47,6 +51,13 @@
 
                 </tbody>
             </table>
+            <pagination-controls (pageChange)="p = $event" class="table-pagination"
+            screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      directionLinks="true"></pagination-controls>
 
 
         </div>
