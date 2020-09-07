@@ -18,6 +18,11 @@ text.highcharts-credits {
     display: none;
   }
 
+  .ngx-pagination .current {
+    border-radius: 50% !important;
+    min-width: 27px !important;
+    background: #3241D3 !important;
+}
 
 
 @media (max-width: 1385px) {

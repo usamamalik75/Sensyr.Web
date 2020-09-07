@@ -124,12 +124,11 @@ export class SensorAlarmTableComponent implements OnInit, AfterViewInit, OnDestr
       data => {
         if (data === '' || data == null) {
           this.alarmModel = this.newAlarmModel;
-          console.log(this.alarmModel);
+          this.totalCount = this.alarmModel.length;
         } else {
           this.alarmModel = this.newAlarmModel.filter(x => x.SensorStatusId === data);
           this.totalCount = this.alarmModel.length;
           this.p = 1;
-          console.log(this.alarmModel);
         }
         document.getElementById('refreshbtn').click();
       });
