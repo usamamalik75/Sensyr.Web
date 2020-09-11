@@ -24,9 +24,11 @@ text.highcharts-credits {
     background: #3241D3 !important;
 }
 
-
+.ov{
+    overflow: visible;
+}
 @media (max-width: 1385px) {
     .alarm-left {
-        width: 100px !important;
+        width: 135px !important;
     }
 }
