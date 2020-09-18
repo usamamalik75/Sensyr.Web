@@ -1,0 +1,97 @@
+
+<div class="table-main" *ngIf="individualTableModel">
+    <div class="tab-row-sections individual-btn">
+        <section>
+    
+            <div class="tab-row-btn-group">
+                <a *ngIf="!isSelect" class="row-btn--cancel cp" (click)="select()">Select</a>
+                <div *ngIf="isSelect">
+                <a class="row-btn--cancel cp" (click)="selectAll()">Select All</a>
+                <a class="cp">Add to Group</a>
+                <a class="row-btn--warning cp" (click)="deleteSensors()" >Delete</a>
+                <a class="row-btn--cancel cp" (click)="select()">Cancel</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="tab-row-sections" *ngFor="let item of individualTableModel; let i = index">
+        <section>
+            <h2>{{item.MachineName}} ({{item.IndividualSensorResponses.length}})</h2>
+
+            <!-- <div class="tab-row-btn-group">
+                <a>Add to Group</a>
+                <a class="row-btn--warning">Delete</a>
+                <a class="row-btn--cancel">Cancel</a>
+            </div> -->
+        </section>
+
+        <div class="col-lg-12 pd-0">
+
+            <div class="col-md-4 col-sm-12 pd-l-0 mt-6"
+                *ngFor="let individualSensor of item.IndividualSensorResponses | paginate: config; let i = index">
+                <div class="tab-sensor-card cp" (click)="isSelect? checkSensors($event, individualSensor,item, i) : sensorDetail(individualSensor)">
+                    <section>
+                        <img src="assets/images/sensor-machine/Mark-7-Chute-2.jpg" >
+                        <aside>
+                            <div class="custom-checkbox" *ngIf="isSelect" (click)="checkSensors($event, individualSensor,item, i, true)">
+                                <input class="check" id="{{item.MachineName}}{{i}}" type="checkbox" >
+                            </div>
+                            <h3>Sensor ID: {{individualSensor.SensorId}}</h3>
+                            <h4>{{individualSensor.SensorName}}</h4>
+                            <p  class="temp-stats temp-warning--blink cp">{{individualSensor.SensorTypeName}}
+                                <span *ngIf="individualSensor.SensorStatusId === sensorStatusIdEnum.critical"
+                                    class="tooltip-top" data-tooltip="Critical!"><img
+                                        src="assets/images/alert-blink-icon.png"></span>
+                                <span class="tooltip-top"
+                                    *ngIf="individualSensor.SensorStatusId === sensorStatusIdEnum.warning"
+                                    data-tooltip="Warning!"><img src="assets/images/warning-blink-icon.png"></span>
+                            </p>
+                        </aside>
+                    </section>
+                    <div  class="d-flex d-flex-temp-stats cp">
+                        <div [class.live-align-center]="individualSensor.DataTypeName == sensorDataTypeNameEnum.digital">
+                            <h3>{{individualSensor.LiveValue}}˚C</h3>
+                            <p>Live Value</p>
+                        </div>
+                        <div *ngIf="individualSensor.DataTypeName != sensorDataTypeNameEnum.digital">
+                            <h3>{{individualSensor.DayMin}}˚C</h3>
+                            <p>Day Min</p>
+                        </div>
+                        <div *ngIf="individualSensor.DataTypeName != sensorDataTypeNameEnum.digital">
+                            <h3>{{individualSensor.DayMax}}˚C</h3>
+                            <p>Day Max</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+
+
+        </div>
+    </div>
+</div>
+
+
+<pagination-template #p="paginationApi" [id]="config.id" (pageChange)="onPageChange($event)">
+
+    <div class="grid-pagination">
+      <p class="pagination-previous" [class.inactiveLink]="p.isFirstPage()">
+        <span  (click)="p.previous()">
+            <img src="assets/images/icon-left-arrow.svg">
+            </span> 
+        </p>
+        <ul>
+        <li class="page-number" *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+              <span  [class.inactiveLink]="!(config.totalItems && config.totalItems > 0)" class="li-span" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">{{ page.label }}</span>
+              <span [class.inactiveLink]="!(config.totalItems && config.totalItems > 0)"  class="li-span" *ngIf="p.getCurrent() === page.value">{{ page.label }}</span>
+        </li>
+    </ul> 
+        <p class="pagination-next" [class.inactiveLink]="p.isLastPage()" >
+          <span (click)="p.next()"> <img src="assets/images/icon-right-arrow.svg"> </span>
+        </p>
+    </div>
+
+  </pagination-template>
+
+  
+<app-confirm-dialog></app-confirm-dialog>

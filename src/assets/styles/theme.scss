@@ -3752,6 +3752,26 @@ td.legendColorBox {
   height: 42px;
   margin-right: 10px;
 }
+.search-input {
+  background: #FFFFFF;
+  border: 1px solid #E8EBF6;
+  border-radius: 8px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 42px;
+  color: #99A0B5;
+  background-image: url("../images/icon-search.svg");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  min-width: 288px;
+  padding-left: 40px;
+  height: 42px;
+  margin-right: 10px;
+  float: right;
+}
+
+
+
 .modal-graph-section{
   border-top:1px solid #E8EBF6;
 }
@@ -3760,7 +3780,7 @@ td.legendColorBox {
   font-size: 16px;
   line-height: 16px;
   color: #212945;
-  padding:12px 0 16px;
+  padding:12px 0 10px;
   margin:0;
   display:inline-block;
 }
@@ -4141,6 +4161,35 @@ td.legendColorBox {
   border-radius: 50%;
   color:white;
 }
+
+.grid-pagination ul li.current, 
+.ngx-pagination a:hover, .ngx-pagination button:hover{
+  background: #3241D3 ;
+  border-radius: 50%;
+  color:white ;
+}
+
+.table-pagination{
+  text-align: center;
+}
+
+.ngx-pagination a {
+  color: #9da4b8 !important;
+}
+
+.li-span{
+  padding: 10px;
+}
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}
+
+.cp{
+  cursor: pointer;
+}
+
 .grid-pagination p:last-child{
   padding-left:10px;
 }
@@ -11114,7 +11163,7 @@ tbody.collapse.in {
   line-height: 1.49;
   white-space: nowrap;
 }
-.btn-warning-grid, .btn-critical-grid{
+.btn-warning-grid, .btn-critical-grid, .btn-inprogress-grid {
   background: #fff8ea;
   border-radius: 18px;
   display:inline-block;
@@ -11129,6 +11178,10 @@ tbody.collapse.in {
 .btn-critical-grid{
   background: #fdf2f2;
   color:#E87A7A;
+}
+.btn-inprogress-grid{
+  background: #f7fbfa;
+  color:#5CB592;
 }
 .grid-action-icon .dropdown-menu{
   padding:15px;
@@ -18923,7 +18976,6 @@ body.sb-top #sidebar_top_toggle {
   background:transparent;
   padding:0;
   box-shadow:none;
-  border: 1px solid #E8EBF6;
   border-radius: 4px;
   width: 100%;
   float: left;
@@ -18995,7 +19047,7 @@ body.sb-top #sidebar_top_toggle {
   margin: 8px 0;
 }
 .panel.panel-custom-table div.dataTables_paginate{
-  width: 500px;
+  min-width: 500px;
   margin: 0 auto;
   text-align: center;
 }
@@ -25785,14 +25837,17 @@ body.basic-timeline .panel-clone {
 }
 .fourBoxColumn{
   border-radius: 8px;
-  padding: 22px 100px 22px 80px;
+  padding: 22px 10px 22px 80px;
   margin:24px 0;
-  background-image: url("../images/icon-critical-alarms.svg"), url("../images/critical-icon-graph.svg");
+  background-image: url("../images/icon-critical-alarms.svg");
   background-position: 15px center, 94% center;
   background-repeat: no-repeat, no-repeat;
   background-color: #fef8f8;
   border-radius: 8px;
   border-left:2px solid #E87A7A;
+}
+.sensor-selected .fourBoxColumn{
+  border:2px solid #E87A7A;
 }
 .WarningSensorDetail{
   border-radius: 8px;
@@ -25915,16 +25970,24 @@ body.basic-timeline .panel-clone {
 .fourBoxColumn.yellowBox{
   background-color:#fffcf5;
   border-left:2px solid #FFBD2F;
-  background-image: url("../images/icon-warnings-breached.svg"), url("../images/warning-breached-graph.svg");
+  background-image: url("../images/icon-warnings-breached.svg");
 }
+.sensor-selected .fourBoxColumn.yellowBox{
+  border:2px solid #FFBD2F;
+}
+
 .fourBoxColumn.yellowBox p, .fourBoxColumn.yellowBox h2{
   color: #FFBD2F;
 }
 .fourBoxColumn.greenBox{
   background-color:#f7fbfa;
   border-left:2px solid #5CB592;
-  background-image: url("../images/icon-in-progress.svg"), url("../images/in-progress-graph.svg");
+  background-image: url("../images/icon-in-progress.svg");
 }
+.sensor-selected .fourBoxColumn.greenBox{
+  border:2px solid #5CB592;
+}
+
 .fourBoxColumn.greenBox p, .fourBoxColumn.greenBox h2{
   color: #5CB592;
 }
@@ -25972,13 +26035,15 @@ body.basic-timeline .panel-clone {
 }
 .bread-crumb-data .breadcrumb-highlighted, .bread-crumb-data .breadcrumb-arrow{
   color:#a4aabd;
+  margin-left: 10px;
 }
+
 .bread-crumb-data .breadcrumb-highlighted{
   margin:0;
 }
 .bread-crumb-data span{
   display:inline-block;
-  margin:0 10px;
+  margin:0 5px 0px 0px;
 }
 .white-box-three h2{
   font-weight: 500;
@@ -26280,6 +26345,9 @@ body.basic-timeline .panel-clone {
 }
 .mt-25{
   margin-top:25px;
+}
+.mt-6{
+  margin-top:6px;
 }
 .mb-0{
   margin-bottom:10px; 
@@ -26654,4 +26722,9 @@ body.basic-timeline .panel-clone {
   .filter-by-container.active{
     width:90%;
   }
+}
+
+a.closeDialog {
+    position: absolute;
+    right: 15px;
 }

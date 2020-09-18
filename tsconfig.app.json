@@ -7,8 +7,9 @@
     "experimentalDecorators": true,
     "paths": {
       "@app/*": [ "src/app/*" ],
-      "@env/*": [ "src/environments/*" ]
-    }
+      "@env/*": [ "src/environments/*" ],
+      "@angular/*": ["../node_modules/@angular/*"]
+    } 
   },
   "files": [
     "src/main.ts",

@@ -7,7 +7,7 @@
         </div>
 
         <!-- -------------- Sidebar Left Wrapper  -------------- -->
-        <div class="sidebar-left-content nano-content" tabindex="0" style="margin-right: -7px;">
+        <div class="sidebar-left-content nano-content" tabindex="0" style="margin-right: -7px; overflow-y: hidden;">
             <a class="navbar-logo-text" href="#">
                 <img src="assets/images/Logo.svg">
             </a>
@@ -19,7 +19,7 @@
 
                 <li class="machine-icon" routerLinkActive="active">
                     <a [routerLink]="['/', 'app','machine']">
-                        <span class="sidebar-title"  >Machine</span>
+                        <span class="sidebar-title"  >Assets</span>
                     </a>
                 </li>
 
@@ -66,7 +66,10 @@
                     <div class="row row-box-rounded">
                         <div class="col-md-6 col-sm-12 pd-l-0">
                             <span class="day-status"> {{welcomeStatus}}, Riley</span>
-                            <span class="time-status"> {{dateTime}}</span>
+                            <span class="time-status">
+                                <span class="time-move"> {{time}}</span> 
+                                <span>, {{date}}</span>
+                            </span>
                         </div>
                         <div class="col-md-6 col-sm-12 pd-r-0">
                             <ul class="nav-notification">
@@ -88,6 +91,8 @@
                     </div>
                 </div>
     
+               
+                <app-breadcrumb></app-breadcrumb>
                 <router-outlet></router-outlet>
             </div>
         </section>

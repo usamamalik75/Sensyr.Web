@@ -1,0 +1,44 @@
+<div class="col-lg-12 pd-0 box-container" >
+    <div class="tab-block tab-sensors">
+        <form [formGroup]="sensorTableForm" novalidate>
+            <div class="tabs-sensor-header">
+                <ul>
+                    <li class="active">
+                        <a (click)="resetSerch('individual')" href="#tabGeneral" data-toggle="tab" aria-expanded="true">
+                            Individual Sensors
+                            <span *ngIf="totalMachineSensor"> {{totalMachineSensor.TotalSensors}}</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a (click)="resetSerch('group')" href="#tabPreferences" data-toggle="tab" aria-expanded="false">
+                            Sensor Groups
+                            <span *ngIf="totalMachineSensor"> {{totalMachineSensor.TotalSensorGroups}}</span>
+                    </a>
+                    </li>
+                </ul>
+                <div class="tab-sensor-head-form">
+                    <input type="search" *ngIf="!isSensorGroup" placeholder="Search sensor by name or assets"
+                        formControlName="searchText" (keyup)="search()">
+                    <input type="search" *ngIf="isSensorGroup" placeholder="Search sensor by name or assets"
+                        formControlName="searchGroupText" (keyup)="search()">
+                    <select>
+                        <option>Filter By</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="tab-content">
+            <div id="tabGeneral" class="tab-pane active">
+                <!-- Individual Table -->
+                <app-sensor-individual-table [searchClick]="searchClick"> </app-sensor-individual-table>
+                <!-- Individual Table End -->
+            </div>
+            <div id="tabPreferences" class="tab-pane">
+                <!-- Group Table -->
+                <app-sensor-group-table *ngIf="isSensorGroupTable" [searchGroupClick]="searchGroupClick">
+                </app-sensor-group-table>
+                <!-- Group Table End-->
+            </div>
+        </div>
+    </div>
+</div>

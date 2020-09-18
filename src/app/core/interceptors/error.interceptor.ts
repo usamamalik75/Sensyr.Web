@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,9 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(
     public toastrService: ToastrService,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+
   ) { }
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
@@ -23,8 +28,10 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.toastrService.error(error.error, '');
           } else if (error.status === 401) {
             this.toastrService.error('Please contact to administrator', 'Unauthorized');
+            const token = this.authenticationService.remove('token');
+            this.router.navigate(['auth', 'login']);
           } else {
-            this.toastrService.error('Something was not right. Please try again.', 'Server is not Responding');
+            this.toastrService.error('Try again after some time.', 'Server is not Responding');
           }
           return throwError(error);
         })

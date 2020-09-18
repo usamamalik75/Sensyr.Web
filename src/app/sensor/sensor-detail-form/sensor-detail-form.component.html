@@ -1,0 +1,370 @@
+<div class="box-rounded">
+    <div class="col-md-12 pd-0 box-container ov">
+        <div class="tab-sensor-card-detail box-container ov" >
+            <div id="myModal" [class]="isImgExpand? 'image-modal display-block' : 'image-modal display-none'">
+                <span class="close cp" (click)="imageExpand(false)">&times;</span>
+                <img class="image-modal-content" src="assets/images/sensor-machine/lg/Bearingless-wheelset.jpg" id="img01">
+                <div id="caption"></div>
+            </div>
+            <section>
+                <img src="assets/images/sensor-machine/lg/Bearingless-wheelset.jpg" class="cp" (click)="imageExpand(true)">
+                
+
+                <aside>
+                    <h2>{{sensorModel.SensorName}}</h2>
+                    <h3>Sensor ID: {{sensorModel.SensorId}} • Assets: {{sensorModel.MachineName}}</h3>
+                    <p class="temp-stats">{{sensorTypeName}}</p>
+
+                    <div class="btn-group">
+                        <span class="dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/icon-dots.png">
+                        
+                        </span>
+                        <ul class="dropdown-menu pull-right" role="menu">
+                            <li>
+                                <a >Edit Sensor</a>
+                            </li>
+                            <li>
+                                <a (click)="deleteSensor()">Delete Sensor</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+            </section>
+        </div>
+
+    </div>
+
+
+    <div class="col-md-12 pd-0 box-container">
+
+
+        <div class="tab-block tab-sensors-detail">
+
+            <div class="tabs-sensor-header">
+                <ul>
+                    <li class="active">
+                        <a href="#tabAnalytics" data-toggle="tab" aria-expanded="true">Analytics </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabAlarms" data-toggle="tab" aria-expanded="false">Alarms </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabSensorData" data-toggle="tab" aria-expanded="false">Sensor Detail </a>
+                    </li>
+                    <li class="">
+                        <a href="#tabFiles" data-toggle="tab" aria-expanded="false">Files </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div id="tabAnalytics" class="tab-pane active">
+                    <app-sensor-detail-analytics></app-sensor-detail-analytics>
+                </div>
+                <div id="tabAlarms" class="tab-pane">
+                    <div class="col-md-12 pd-0">
+                        <div class="WarningSensorDetail">
+                            <div class="col-md-3 col-sm-12">
+                                <p class="sub-text">Warnings Breached</p>
+                            </div>
+                            <div class="col-md-3 col-sm-12 text-center">
+                                <div class="time-elapsed">
+                                    <h3>24m 04s</h3>
+                                    <p>Time Elapsed</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="technician-detail">
+                                    <section>
+                                        <h2>Technician</h2>
+                                        <div class="technician-multiple">
+                                            <img src="assets/images/technician-1.png">
+                                            <img src="assets/images/technician-2.png">
+                                            <img src="assets/images/technician-3.png">
+                                        </div>
+                                    </section>
+                                    <section>
+                                        <h3>95˚C</h3>
+                                        <p>Breach Value</p>
+                                    </section>
+                                    <section>
+                                        <h3>93˚C</h3>
+                                        <p>Live Value</p>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Grid -->
+                    <div class="panel panel-visible panel-custom-table mb-0">
+                        <div class="panel-body pn">
+                            <div class="table-responsive">
+                                <table class="table" id="datatable" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Triggered On</th>
+                                            <th>Resolved on</th>
+                                            <th>Resolution TAT</th>
+                                            <th>breached Value</th>
+                                            <th>Technician</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>27th July, 2020 : 12:05 pm</td>
+                                            <td>27th July, 2020 : 12:17 pm</td>
+                                            <td>12:05 min</td>
+                                            <td>99.2˚C</td>
+                                            <td>Jonathan Doe, Chris Devis <a href="#">+2 more</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>28th July, 2020 : 12:05 pm</td>
+                                            <td>28th July, 2020 : 12:17 pm</td>
+                                            <td>12:06 min</td>
+                                            <td>99.2˚C</td>
+                                            <td>Jonathan Doe, Chris Devis <a href="#">+2 more</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>27th July, 2020 : 12:05 pm</td>
+                                            <td>27th July, 2020 : 12:17 pm</td>
+                                            <td>12:05 min</td>
+                                            <td>99.2˚C</td>
+                                            <td>Jonathan Doe, Chris Devis <a href="#">+2 more</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>28th July, 2020 : 12:05 pm</td>
+                                            <td>28th July, 2020 : 12:17 pm</td>
+                                            <td>12:06 min</td>
+                                            <td>99.2˚C</td>
+                                            <td>Jonathan Doe, Chris Devis <a href="#">+2 more</a></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Grid -->
+
+                </div>
+                <div id="tabSensorData" class="tab-pane">
+
+                    <div class="sensor-data-container" >
+                        <div class="col-md-6 col-sm-12 pd-l-0">
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Data Type</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.DataTypeName}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Gateway ID</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.GatewayId}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Port Number </label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.PortNumber}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Last Value reading</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.LastValue}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Frequency</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.FrequencyNumber}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Sleep Start</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.SleepStart}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Sleep End</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.SleepEnd}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Critical Min</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.CriticalMin}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Critical Max</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.CriticalMax}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Location</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <!-- <label>{{sensorModel.Location}}</label> -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 pd-r-0">
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Warning Min</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.WarningMin}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Warning Max</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.WarningMax}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Digital Low Min</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.DigitalLowMin}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Digital Low Max</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.DigitalLowMax}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Digital High Min</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.DigitalHighMin}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Digital High Max</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label>{{sensorModel.DigitalHighMax}}˚C</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Date Created</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <label> {{sharedService.getCustomDateTime(sensorModel.DateCreated)}}</label>
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Packets Sent from Sensor</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <!-- <label>{{sensorModel.isSent}}</label> -->
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Notification Preferences</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <!-- <label>Warning / Crictical / In-Progress</label> -->
+                                </div>
+                            </div>
+
+                            <div class="sensor-data-row">
+                                <div class="col-md-6 col-sm-12 pd-l-0">
+                                    <label>Notification Via</label>
+                                </div>
+                                <div class="col-md-6 col-sm-12 pd-r-0">
+                                    <!-- <label>SMS / Email / Call / Text</label> -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 pd-0">
+                        <div class="sensor-data-row no-border">
+                            <div class="col-md-12 col-sm-12 pd-l-0">
+                                <label>Additional Comments</label>
+                                <p>
+                                    <!-- {{sensorModel.comments}} -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="tabFiles" class="tab-pane">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<app-confirm-dialog></app-confirm-dialog>

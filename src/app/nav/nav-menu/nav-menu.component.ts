@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '@app/shared/services/shared.service';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +8,8 @@ import { SharedService } from '@app/shared/services/shared.service';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-  dateTime: string;
+  date: string;
+  time: string;
   welcomeStatus: string;
 
   constructor(
@@ -15,11 +17,15 @@ export class NavMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dateTime = this.sharedService.getDateTime();
-    this.welcomeStatus = this.sharedService.welcomeStatus();
+    const source = interval(1000);
+    const subscribe = source.subscribe(
+      val => {
+        this.date = this.sharedService.getDate();
+        this.time = this.sharedService.getTime();
+        this.welcomeStatus = this.sharedService.welcomeStatus();
+      });
   }
 
-  save(){
-    console.log();
+  save() {
   }
 }

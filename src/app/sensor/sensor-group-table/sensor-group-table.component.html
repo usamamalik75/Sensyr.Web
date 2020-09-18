@@ -1,0 +1,30 @@
+<div class="table-main" *ngIf="groupTableModel">
+    <div class="tab-row-sections" *ngFor="let item of groupTableModel.Items; let i = index">
+        <section>
+            <h2>{{item.MachineName}} ({{item.SensorGroupResponses.length}})</h2>
+        </section>
+        <div class="col-lg-12 pd-0">
+            <div class="col-md-3 col-sm-12 pd-l-0" *ngFor="let groupSensor of item.SensorGroupResponses; let i = index">
+                <div class="tab-sensor-group-card">
+                    <section>
+                        <h3>Group ID: {{groupSensor.MachineGroupId}}</h3>
+                        <h4>{{groupSensor.GroupName}}</h4>
+                        <p>{{groupSensor.TotalMachineGroupSensors}} sensors • </p>
+                    </section>
+                    <div class="view-sensor-link cp" (click)="modalData(groupSensor);openModal('custom-modal-1')">
+                        <p><a>View Sensors</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<jw-modal id="custom-modal-1" (click)="closeModal('custom-modal-1');">
+    <span *ngIf="groupId">
+        <a (click)="closeModal('custom-modal-1');" title="Close" class="closeDialog cp">
+            <img src="assets/images/icon-close.svg">
+        </a>
+        <app-sensor-group-form [data]="groupId" (closeClick)="closeModal('custom-modal-1');"></app-sensor-group-form>
+    </span>
+</jw-modal>

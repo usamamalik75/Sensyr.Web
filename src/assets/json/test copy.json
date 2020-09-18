@@ -1,0 +1,66 @@
+[
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 45,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Warning",
+    "DateTime": "2020-08-25T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 100,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Critical",
+    "DateTime": "2020-08-25T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 60,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Warning",
+    "DateTime": "2020-08-26T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 40,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Critical",
+    "DateTime": "2020-08-26T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 90,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Warning",
+    "DateTime": "2020-08-28T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 110,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Critical",
+    "DateTime": "2020-08-28T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 20,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Warning",
+    "DateTime": "2020-08-28T04:52:58.237"
+  },
+  {
+    "SensorId": 8,
+    "Voltage": 10,
+    "Value": 10,
+    "SensorStatusId": 2,
+    "SensorStatusName": "Critical",
+    "DateTime": "2020-08-28T04:52:58.237"
+  }
+]
